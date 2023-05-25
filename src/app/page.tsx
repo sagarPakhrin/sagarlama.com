@@ -1,8 +1,9 @@
+import Sagar from '@/assets/images/Sagar Lama.png';
+import Experience from '@/components/Experience/Experience';
+import TechStacks from '@/components/TechStacks/TechStacks';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Frontend from '@/assets/icons/frontend.svg';
-import Sagar from '@/assets/images/Sagar Lama.png';
 
 export default function Home() {
   return (
@@ -48,46 +49,21 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="py-10 md:py-16 lg:py-32 bg-gray-50">
-        <div className="mx-auto container flex flex-col items-center">
-          <span className="text-sm bg-yellow-500 px-3 py-[2px] rounded text-white font-medium">
-            What I Do
-          </span>
-          <div className="mt-10 flex flex-wrap gap-5">
-            <div className="py-10 px-7 bg-white rounded-md flex flex-col gap-2 items-center w-full md:w-72 shadow hover:shadow-md">
-              <Frontend className="text-red-500 outline-current h-12 w-12" />
-              <h2 className="font-medium">Backend</h2>
-              <p className="text-center">
-                Build fully responsive web applications using React, Next.js,
-                Typescript and TailwindCSS.
-              </p>
-            </div>
-            <div className="py-10 px-7 bg-white rounded-md flex flex-col gap-2 items-center w-full md:w-72 shadow hover:shadow-md">
-              <Frontend className="text-red-500 outline-current h-12 w-12" />
-              <h2 className="font-medium">Backend</h2>
-              <p className="text-center">
-                Build scalable and mantainable RESTful/Graphql APIs using Node,
-                Nestjs, typescript.
-              </p>
-            </div>
-            <div className="py-10 px-7 bg-white rounded-md flex flex-col gap-2 items-center w-full md:w-72 shadow hover:shadow-md">
-              <Frontend className="text-red-500 outline-current h-12 w-12" />
-              <h2 className="font-medium">Fullstack development</h2>
-              <p className="text-center">
-                Combine the power of frontend and backend to build fullstack web
-                application to help businesses grow.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="py-10 md:py-16 lg:py-32 bg-gray-100">
         <div className="mx-auto container flex justify-center">
           <span className="text-sm bg-yellow-500 px-3 py-[2px] rounded text-white font-medium">
             My Stacks
           </span>
         </div>
+        <div className="mt-10">
+          <div className="container">
+            <div className="w-full px-4 lg:w-3/4 mx-auto">
+              <TechStacks />
+            </div>
+          </div>
+        </div>
       </div>
+      <Experience />
     </main>
   );
 }

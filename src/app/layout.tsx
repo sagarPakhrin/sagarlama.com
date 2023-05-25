@@ -1,5 +1,6 @@
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import './globals.css';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Sagar Lama',
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

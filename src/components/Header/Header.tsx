@@ -37,31 +37,33 @@ export const Navbar = () => {
     },
   ];
   return (
-    <nav
-      className={classNames(
-        'px-8 py-4 flex items-center justify-end text-sm gap-4 text-gray-300 bg-gray-900',
-        sticky ? 'sticky top-0 left-0 z-30' : 'relative'
-      )}
-    >
-      {socials.map((social, idx) => (
+    <header>
+      <nav
+        className={classNames(
+          'px-8 py-4 flex items-center justify-end text-sm gap-4 text-gray-300 bg-gray-900',
+          sticky ? 'sticky top-0 left-0 z-30' : 'relative'
+        )}
+      >
+        {socials.map((social, idx) => (
+          <Link
+            href={social.url}
+            key={idx}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {social.name}
+          </Link>
+        ))}
         <Link
-          href={social.url}
-          key={idx}
+          href="https://drive.google.com/file/d/1sfkiSGbeWzTtpNznrE7e8xwhwyYtfD0t/view"
           target="_blank"
           rel="noopener noreferrer"
+          className="bg-slate-500 px-4 py-2 rounded"
         >
-          {social.name}
+          Resume
         </Link>
-      ))}
-      <Link
-        href="https://drive.google.com/file/d/1sfkiSGbeWzTtpNznrE7e8xwhwyYtfD0t/view"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-slate-500 px-4 py-2 rounded"
-      >
-        Resume
-      </Link>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
