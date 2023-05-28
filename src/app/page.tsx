@@ -32,9 +32,9 @@ export default function Home() {
             Sagar Lama is a fullstack developer with expertise in{' '}
             <span className="text-yellow-400">JavaScript</span> and{' '}
             <span className="text-yellow-400">TypeScript</span>, and frameworks
-            such as React, Node.js, and Nestjs. Sagar focuses on building
-            scalable, testable and mantainable web applications, RESTful/Graphql
-            APIs, following best practises.
+            like React, Node.js, and Nestjs. Sagar focuses on building scalable,
+            testable and mantainable web applications, RESTful/Graphql APIs,
+            following industry best practises.
           </p>
         </div>
         <div className="hidden lg:block w-full lg:w-2/5">
