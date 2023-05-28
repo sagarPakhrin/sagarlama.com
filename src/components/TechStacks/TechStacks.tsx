@@ -10,6 +10,7 @@ import React from '@/assets/icons/stacks/react.svg';
 import Tailwind from '@/assets/icons/stacks/tailwind.svg';
 import Typescript from '@/assets/icons/stacks/typescript.svg';
 import Vim from '@/assets/icons/stacks/vim.svg';
+import GQL from '@/assets/icons/stacks/gql.svg';
 import Link from 'next/link';
 
 const TechStacks = () => {
@@ -39,6 +40,10 @@ const TechStacks = () => {
       icon: <Nestjs className="h-24 w-24 lg:h-28 lg:w-28" />,
     },
     {
+      link: 'https://graphql.org/',
+      icon: <GQL className="h-24 w-24 lg:h-28 lg:w-28" />,
+    },
+    {
       link: 'https://www.prisma.io/',
       icon: <Prisma className="h-24 w-24 lg:h-28 lg:w-28" />,
     },
@@ -65,18 +70,20 @@ const TechStacks = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10">
-      {stacks.map((stack, index) => (
-        <Link
-          key={index}
-          href={stack.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex justify-center items-center"
-        >
-          <div className="cursor-pointer">{stack.icon}</div>
-        </Link>
-      ))}
+    <div className="container my-12 mx-auto px-4 md:px-12">
+      <div className="flex justify-center flex-wrap -mx-3 lg:-mx-4">
+        {stacks.map((stack, index) => (
+          <Link
+            key={index}
+            href={stack.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="my-4 px-4 w-1/3 md:w-1/4 lg:my-4 lg:px-4 lg:w-1/5 flex justify-center items-center"
+          >
+            <div className="cursor-pointer">{stack.icon}</div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
