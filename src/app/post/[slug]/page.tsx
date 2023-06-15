@@ -26,12 +26,16 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
     <>
       <Head>
         <title>{post.title}</title>
-        <meta name="description" content={post.exerpt} key={'description'} />
+        <meta
+          name="description"
+          content={post.description}
+          key={'description'}
+        />
         <meta name="keywords" content={post.metadata} />
       </Head>
       <div className="container mx-auto">
         <article className="mx-auto max-w-4xl py-8">
-          <div className="mb-8">
+          <header className="">
             <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
             <div className="mt-2 flex items-center text-sm text-gray-600 gap-4">
               <time dateTime={post.date} className="">
@@ -39,8 +43,11 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
               </time>
               <span>{post.readingTime.text}</span>
             </div>
+          </header>
+          <div className="mt-4">
+            <p>{post.description}</p>
+            <Mdx code={post.body.code} />
           </div>
-          <Mdx code={post.body.code} />
         </article>
       </div>
     </>

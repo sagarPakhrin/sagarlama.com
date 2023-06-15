@@ -6,25 +6,30 @@ function PostCard(post: Post) {
   return (
     <div className="mb-8">
       <h2 className="mb-1 text-xl">
-        <Link
-          href={post.slug}
-          className="text-blue-700 hover:text-blue-900 dark:text-blue-400"
-        >
+        <Link href={post.slug} className="hover:text-blue-700">
           {post.title}
         </Link>
       </h2>
-      <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
-        {format(parseISO(post.date), 'LLLL d, yyyy')}
-      </time>
-      <p className="text-gray-700 dark:text-gray-300">{post.exerpt}</p>
-      <Link className="" href={post.slug}>
+      <div className="flex items-center gap-3  text-sm text-gray-600">
+        <time dateTime={post.date}>
+          {format(parseISO(post.date), 'LLLL d, yyyy')}
+        </time>
+        <span className="text-sm">{post.readingTime.text}</span>
+      </div>
+      <p className="mt-3 text-gray-700 dark:text-gray-300 line-clamp-2">
+        {post.description}
+      </p>
+      <Link
+        className="text-sm underline mt-2 hover:text-blue-500 font-medium"
+        href={post.slug}
+      >
         Read Post
       </Link>
     </div>
   );
 }
 
-const Blogs = () => {
+const Posts = () => {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
@@ -38,4 +43,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Posts;
