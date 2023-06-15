@@ -1,5 +1,4 @@
 import Sagar from '@/assets/images/Sagar Lama.png';
-import Experience from '@/components/Experience/Experience';
 import TechStacks from '@/components/TechStacks/TechStacks';
 import Head from 'next/head';
 import Image from 'next/image';
