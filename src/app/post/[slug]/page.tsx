@@ -1,8 +1,8 @@
-import { format, parseISO } from 'date-fns';
-import { notFound } from 'next/navigation';
+import Mdx from '@/components/Mdx';
 import { allPosts } from 'contentlayer/generated';
-import { Mdx } from '@/components/Mdx/Mdx';
+import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
+import { notFound } from 'next/navigation';
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
