@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
 };
 
-const isProduction = process.env.NODE_ENV === 'production';
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export default function RootLayout({
   children,
@@ -43,10 +43,10 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        {isProduction && (
+        {GA_MEASUREMENT_ID && (
           <>
             <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-F3SQW5Q6XV"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">
@@ -55,7 +55,7 @@ export default function RootLayout({
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', 'G-F3SQW5Q6XV');
+                gtag('config', '${GA_MEASUREMENT_ID}');
               `}
             </Script>
           </>
