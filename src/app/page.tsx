@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Sagar from '@/assets/images/Sagar Lama.png';
 import TechStacks from '@/components/TechStacks/TechStacks';
 import Head from 'next/head';
@@ -16,24 +17,13 @@ export default function Home() {
             {' '}
             Sagar Lama
           </h1>
-          <h2 className="mt-3 text-lg md:text-2xl text-gray-300 font-poppins">
-            Software Consultant at{' '}
-            <Link
-              className="text-blue-300"
-              href="https://avesha.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Avesha.io
-            </Link>
+          <h2 className="mt-3 text-lg md:text-2xl text-gray-200 font-poppins">
+            Fullstack Software Developer
           </h2>
-          <p className="mt-2 text-sm lg:text-base">
-            Sagar Lama is a fullstack developer with expertise in{' '}
-            <span className="text-yellow-400">JavaScript</span> and{' '}
-            <span className="text-yellow-400">TypeScript</span>, and frameworks
-            like React, Node.js, and Nestjs. Sagar focuses on building scalable,
-            testable and mantainable web applications, RESTful/Graphql APIs,
-            following industry best practises.
+          <p className="mt-2 text-sm lg:text-base text-gray-400">
+            Hey, I'm a software developer based in Kathmandu, Nepal. I'm
+            passionate about building stuffs for the web keeping industry best
+            practises in mind and ocassionally write about it.
           </p>
         </div>
         <div className="hidden lg:block w-full lg:w-2/5">
@@ -48,6 +38,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/*
       <div className="py-10 md:py-16 lg:py-32 bg-gray-100">
         <div className="mx-auto container flex justify-center">
           <span className="text-sm bg-yellow-500 px-3 py-[2px] rounded text-white font-medium">
@@ -62,6 +53,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      */}
       {/*
       <Experience />
 */}

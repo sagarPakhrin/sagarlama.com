@@ -30,9 +30,9 @@ function PostCard(post: Post) {
 }
 
 const Posts = () => {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+  const posts = allPosts
+    .filter((post) => post.published)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
     <div className="mx-auto max-w-xl py-8">

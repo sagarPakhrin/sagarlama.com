@@ -15,7 +15,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 
 const getBlogFromSlug = async (slug: string) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
-  if (!post) notFound();
+  if (!post || !post.published) notFound();
   return post;
 };
 
