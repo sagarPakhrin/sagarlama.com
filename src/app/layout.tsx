@@ -1,11 +1,14 @@
 import Header from '@/components/Header';
 import './globals.css';
 import Footer from '@/components/Footer';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Sagar Lama',
   description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
 };
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default function RootLayout({
   children,
@@ -40,6 +43,23 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        {isProduction && (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-F3SQW5Q6XV"
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-F3SQW5Q6XV');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
