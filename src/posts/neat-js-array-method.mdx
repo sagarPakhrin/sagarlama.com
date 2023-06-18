@@ -1,19 +1,21 @@
 ---
-title: Javascript Utility Functions That I Take With Me Every Where
-description: As you write more and more code, you come across pieces of code that you really like and can use across any project. Here are some of my favourite javascript utility functions that I take anywhere with me.
+title: Neat Javascript Array Method
+description: A neat little javascript array method that you can use to create cool utility functions
 date: 06-15-2023
-published: false
+published: true
 ---
+
+```js
+.filter(Boolean)
+```
+
+
 ### Conditional classNames filter
 ```js
 export const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ');
 };
 
-// ts
-export const classNames = (...classes: any[]): string => {
-  return classes.filter(Boolean).join(' ');
-};
 ```
 
 The trick here is, we take any number of parameters and spread them into a single array with `...classes`, use `.filter(Boolean)` array method to filter out any falsy values and join with and empty space
