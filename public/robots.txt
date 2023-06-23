@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sagarlama.com
+
+# Sitemaps
+Sitemap: https://sagarlama.com/sitemap.xml
