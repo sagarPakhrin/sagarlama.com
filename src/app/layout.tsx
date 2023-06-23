@@ -24,7 +24,7 @@ export default function RootLayout({
         <meta name="twitter:site" content="@sagarllp" />
         <meta
           name="twitter:description"
-          content="Sagar Lama is a Software Consultant at Avesha.io"
+          content="Sagar Lama is a Fullstack Software Developer"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Sagar Lama" />
@@ -36,7 +36,7 @@ export default function RootLayout({
         <meta property="og:title" content="" />
         <meta
           property="og:description"
-          content="Sagar Lama is a Software Consultant at Avesha.io"
+          content="Sagar Lama is a Fullstack Software Developer"
         />
       </head>
       <body>

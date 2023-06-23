@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+code:not(pre code) {
+  @apply bg-gray-200 px-1 rounded-sm;
+}

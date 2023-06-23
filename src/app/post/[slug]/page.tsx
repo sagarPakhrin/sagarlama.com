@@ -33,7 +33,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         />
         <meta name="keywords" content={post.metadata} />
       </Head>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <article className="mx-auto max-w-4xl py-8">
           <header className="">
             <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
