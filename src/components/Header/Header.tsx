@@ -60,14 +60,6 @@ export const Navbar = () => {
               {social.name}
             </Link>
           ))}
-          <Link
-            href="https://drive.google.com/file/d/1sfkiSGbeWzTtpNznrE7e8xwhwyYtfD0t/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-slate-500 px-4 py-2 rounded"
-          >
-            Resume
-          </Link>
         </div>
       </nav>
     </header>
