@@ -42,7 +42,7 @@ const Footer = () => {
               <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
-          <a
+          {/* <a
             href="https://www.instagram.com/sagarllp/"
             target="_blank"
             rel="noopener noreferrer"
@@ -61,7 +61,7 @@ const Footer = () => {
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01" />
             </svg>
-          </a>
+          </a> */}
         </div>
       </div>
     </footer>

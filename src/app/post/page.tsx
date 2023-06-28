@@ -2,6 +2,13 @@ import { Post, allPosts } from 'contentlayer/generated';
 import { compareDesc, format, parseISO } from 'date-fns';
 import Link from 'next/link';
 
+// nextjs metadata
+
+export const metadata = {
+  title: 'Sagar Lama | Posts',
+  description: 'Read my latest posts on software development and more.',
+};
+
 function PostCard(post: Post) {
   return (
     <div className="mb-8">

@@ -38,6 +38,7 @@ export default function RootLayout({
           property="og:description"
           content="Sagar Lama is a Fullstack Software Developer"
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
         <Header />
