@@ -27,11 +27,9 @@ export default function RootLayout({
           content="Sagar Lama is a Fullstack Software Developer"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sagar Lama" />
-
-        <meta property="og:image" content="" />
         <meta name="twitter:image" content="" />
         <meta name="twitter:image:src" content="" />
+        <meta property="og:image" content="" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:title" content="" />
         <meta

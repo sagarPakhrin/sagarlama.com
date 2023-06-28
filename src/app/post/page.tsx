@@ -7,6 +7,14 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Sagar Lama | Posts',
   description: 'Read my latest posts on software development and more.',
+  openGraph: {
+    title: 'Sagar Lama | Posts',
+    description: 'Read my latest posts on software development and more.',
+  },
+  twitter: {
+    title: 'Sagar Lama | Posts',
+    description: 'Read my latest posts on software development and more.',
+  },
 };
 
 function PostCard(post: Post) {
