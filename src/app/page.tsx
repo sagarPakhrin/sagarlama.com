@@ -1,15 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 import Sagar from '@/assets/images/Sagar Lama.png';
-import Head from 'next/head';
 import Image from 'next/image';
+
+export const metadata = {
+  title: 'Sagar Lama',
+  description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+  openGraph: {
+    title: 'Sagar Lama',
+    description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+  },
+  twitter: {
+    title: 'Sagar Lama',
+    description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+  },
+};
 
 export default function Home() {
   return (
     <main className="">
-      <Head>
-        <title>Sagar Lama</title>
-        <meta name="twitter:title" content="Sagar Lama" />
-      </Head>
       <div className="bg-gray-900 py-12 px-4 lg:px-28 flex flex-wrap w-full text-white items-center">
         <div className="w-full lg:w-3/5 xl:pr-44">
           <h1 className="text-4xl lg:text-5xl xl:text-8xl font-bold">

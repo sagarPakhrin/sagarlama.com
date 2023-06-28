@@ -6,6 +6,19 @@ import Script from 'next/script';
 export const metadata = {
   title: 'Sagar Lama',
   description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+  authors: [
+    {
+      name: 'Sagar Lama',
+    },
+  ],
+  openGraph: {
+    title: 'Sagar Lama',
+    locale: 'en_US',
+  },
+  twitter: {
+    site: '@sagarllp',
+    title: '',
+  },
 };
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -18,24 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="author" content="Sagar Lama" />
-        <meta name="twitter:creator" content="@sagarllp" />
-        <meta name="twitter:url" content="https://twitter.com/sagarllp" />
-        <meta name="twitter:site" content="@sagarllp" />
-        <meta
-          name="twitter:description"
-          content="Sagar Lama is a Fullstack Software Developer"
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="" />
         <meta name="twitter:image:src" content="" />
         <meta property="og:image" content="" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:title" content="" />
-        <meta
-          property="og:description"
-          content="Sagar Lama is a Fullstack Software Developer"
-        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
