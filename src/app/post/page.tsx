@@ -50,7 +50,7 @@ const Posts = () => {
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="mx-auto max-w-xl py-8">
+    <div className="mx-auto max-w-xl py-8 px-4">
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}
