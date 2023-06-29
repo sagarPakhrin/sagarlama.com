@@ -2,16 +2,19 @@
 import Sagar from '@/assets/images/Sagar Lama.png';
 import Image from 'next/image';
 
+const description =
+  'Sagar Lama is a software engineer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript';
+
 export const metadata = {
   title: 'Sagar Lama',
-  description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+  description,
   openGraph: {
     title: 'Sagar Lama',
-    description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+    description,
   },
   twitter: {
     title: 'Sagar Lama',
-    description: 'Sagar Lama is a software engineer based in Kathmandu, Nepal.',
+    description,
   },
 };
 
