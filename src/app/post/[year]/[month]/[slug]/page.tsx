@@ -7,22 +7,22 @@ import { notFound } from 'next/navigation';
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return {
-    title: post.title,
-    description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      // 'twitter:title': post.title,
-    },
-    twitter: {
-      title: post.title,
-    },
-  };
-};
+// export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+//   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+//   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+//   return {
+//     title: post.title,
+//     description: post.description,
+//     openGraph: {
+//       title: post.title,
+//       description: post.description,
+//       // 'twitter:title': post.title,
+//     },
+//     twitter: {
+//       title: post.title,
+//     },
+//   };
+// };
 
 const getBlogFromSlug = async (slug: string) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
@@ -30,9 +30,16 @@ const getBlogFromSlug = async (slug: string) => {
   return post;
 };
 
-const PostLayout = async ({ params }: { params: { slug: string } }) => {
-  const post = await getBlogFromSlug(params.slug);
+interface PostLayoutProps {
+  year: string;
+  month: string;
+  slug: string;
+}
 
+const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
+  const post = await getBlogFromSlug(
+    `${params.year}/${params.month}/${params.slug}`
+  );
   return (
     <>
       <Head>
