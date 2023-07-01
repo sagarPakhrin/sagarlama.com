@@ -16,7 +16,7 @@ export const generateStaticParams = async () =>
 export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   const slug = `${params.year}/${params.month}/${params.slug}`;
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+  if (!post) notFound();
   return {
     title: post.title,
     description: post.description,
