@@ -2,6 +2,7 @@ import Mdx from '@/components/Mdx';
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 interface PostLayoutProps {
@@ -42,6 +43,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
   const post = await getBlogFromSlug(
     `${params.year}/${params.month}/${params.slug}`
   );
+
   return (
     <>
       <Head>
@@ -64,6 +66,19 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
               <span>{post.readingTime.text}</span>
             </div>
           </header>
+          <div className="mt-4">
+            {post.cover_image && (
+              <div className="w-full h-96 relative">
+                <Image
+                  src={post.cover_image}
+                  alt={post.title}
+                  // width={1000}
+                  // height={500}
+                  fill
+                />
+              </div>
+            )}
+          </div>
           <div className="mt-4">
             <p>{post.description}</p>
             <Mdx code={post.body.code} />

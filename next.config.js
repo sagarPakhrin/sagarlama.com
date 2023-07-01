@@ -14,6 +14,15 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/dmvjadwhx/image/upload/**',
+      },
+    ],
+  },
 };
 
 module.exports = withContentlayer(nextConfig);
