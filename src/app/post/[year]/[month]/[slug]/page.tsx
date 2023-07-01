@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-interface PostLayoutProps {
+export interface PostLayoutProps {
   year: string;
   month: string;
   slug: string;
@@ -19,19 +19,20 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
   if (!post) notFound();
 
-  const metadata = {
+  const og = {
     title: post.title,
     description: post.description,
     image: post.cover_image ?? '',
   };
 
-  return {
+  const metadata = {
     title: post.title,
     description: post.description,
     image: post.cover_image ?? '',
-    openGraph: metadata,
-    twitter: metadata,
+    openGraph: og,
+    twitter: og,
   };
+  return metadata;
 };
 
 const getBlogFromSlug = async (slug: string) => {
