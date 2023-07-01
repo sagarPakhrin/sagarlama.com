@@ -1,7 +1,6 @@
 import Mdx from '@/components/Mdx';
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
-import Head from 'next/head';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
@@ -22,7 +21,17 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   const og = {
     title: post.title,
     description: post.description,
-    image: post.cover_image ?? '',
+    // spread only if cover_image exists
+    ...(post.cover_image && {
+      images: [
+        {
+          url: post.cover_image ?? '',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    }),
   };
 
   const metadata = {
@@ -47,47 +56,36 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
   );
 
   return (
-    <>
-      <Head>
-        <title>{post.title}</title>
-        <meta
-          name="description"
-          content={post.description}
-          key={'description'}
-        />
-        <meta name="keywords" content={post.metadata} />
-      </Head>
-      <div className="container mx-auto px-4">
-        <article className="mx-auto max-w-4xl py-8">
-          <header className="">
-            <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
-            <div className="mt-2 flex items-center text-sm text-gray-600 gap-4">
-              <time dateTime={post.date} className="">
-                {format(parseISO(post.date), 'LLLL d, yyyy')}
-              </time>
-              <span>{post.readingTime.text}</span>
+    <div className="container mx-auto px-4">
+      <article className="mx-auto max-w-4xl py-8">
+        <header className="">
+          <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
+          <div className="mt-2 flex items-center text-sm text-gray-600 gap-4">
+            <time dateTime={post.date} className="">
+              {format(parseISO(post.date), 'LLLL d, yyyy')}
+            </time>
+            <span>{post.readingTime.text}</span>
+          </div>
+        </header>
+        <div className="mt-4">
+          {post.cover_image && (
+            <div className="w-full h-96 relative">
+              <Image
+                src={post.cover_image}
+                alt={post.title}
+                // width={1000}
+                // height={500}
+                fill
+              />
             </div>
-          </header>
-          <div className="mt-4">
-            {post.cover_image && (
-              <div className="w-full h-96 relative">
-                <Image
-                  src={post.cover_image}
-                  alt={post.title}
-                  // width={1000}
-                  // height={500}
-                  fill
-                />
-              </div>
-            )}
-          </div>
-          <div className="mt-4">
-            <p>{post.description}</p>
-            <Mdx code={post.body.code} />
-          </div>
-        </article>
-      </div>
-    </>
+          )}
+        </div>
+        <div className="mt-4">
+          <p>{post.description}</p>
+          <Mdx code={post.body.code} />
+        </div>
+      </article>
+    </div>
   );
 };
 

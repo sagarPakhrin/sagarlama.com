@@ -31,10 +31,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="" />
-        <meta name="twitter:image:src" content="" />
-        <meta property="og:image" content="" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
