@@ -28,6 +28,7 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   return {
     title: post.title,
     description: post.description,
+    image: post.cover_image ?? '',
     openGraph: metadata,
     twitter: metadata,
   };
