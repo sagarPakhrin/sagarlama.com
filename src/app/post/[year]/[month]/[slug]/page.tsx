@@ -17,17 +17,18 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   const slug = `${params.year}/${params.month}/${params.slug}`;
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
   if (!post) notFound();
+
+  const metadata = {
+    title: post.title,
+    description: post.description,
+    image: post.cover_image ?? '',
+  };
+
   return {
     title: post.title,
     description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      // 'twitter:title': post.title,
-    },
-    twitter: {
-      title: post.title,
-    },
+    openGraph: metadata,
+    twitter: metadata,
   };
 };
 

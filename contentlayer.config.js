@@ -36,6 +36,7 @@ export const Post = defineDocumentType(() => ({
     // exerpt: { type: 'string', required: true },
     metadata: { type: 'string', required: false },
     metadescription: { type: 'string', required: false },
+    cover_image: { type: 'string', required: false },
   },
   computedFields,
 }));
