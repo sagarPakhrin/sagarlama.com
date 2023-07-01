@@ -4,11 +4,18 @@ import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
 import { notFound } from 'next/navigation';
 
+interface PostLayoutProps {
+  year: string;
+  month: string;
+  slug: string;
+}
+
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
+  const slug = `${params.year}/${params.month}/${params.slug}`;
+  const post = allPosts.find((post) => post._raw.flattenedPath === slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   return {
     title: post.title,
@@ -29,12 +36,6 @@ const getBlogFromSlug = async (slug: string) => {
   if (!post || !post.published) notFound();
   return post;
 };
-
-interface PostLayoutProps {
-  year: string;
-  month: string;
-  slug: string;
-}
 
 const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
   const post = await getBlogFromSlug(
