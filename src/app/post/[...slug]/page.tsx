@@ -5,16 +5,14 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 export interface PostLayoutProps {
-  year: string;
-  month: string;
-  slug: string;
+  slug: string[];
 }
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  allPosts.map((post) => ({ slug: post._raw.flattenedPath.split('/') }));
 
 export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
-  const slug = `${params.year}/${params.month}/${params.slug}`;
+  const slug = params.slug.join('/');
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
   if (!post) notFound();
 
@@ -44,16 +42,16 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   return metadata;
 };
 
-const getBlogFromSlug = async (slug: string) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === slug);
+const getBlogFromSlug = async (slug: PostLayoutProps['slug']) => {
+  const post = allPosts.find((p) => {
+    return p._raw.flattenedPath === slug.join('/');
+  });
   if (!post || !post.published) notFound();
   return post;
 };
 
 const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
-  const post = await getBlogFromSlug(
-    `${params.year}/${params.month}/${params.slug}`
-  );
+  const post = await getBlogFromSlug(params.slug);
 
   return (
     <div className="container mx-auto px-4">
