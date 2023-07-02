@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://sagarlama.com
+Host: https://www.sagarlama.com
 
 # Sitemaps
-Sitemap: https://sagarlama.com/sitemap.xml
+Sitemap: https://www.sagarlama.com/sitemap.xml

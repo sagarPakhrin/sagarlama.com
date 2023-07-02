@@ -2,7 +2,7 @@
 module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sagarlama.com',
   generateRobotsTxt: true, // (optional)
-  priority: 0.9,
+  priority: 1,
   generateIndexSitemap: false,
   exclude: ['/favicon.ico', '/api/*'],
 };
