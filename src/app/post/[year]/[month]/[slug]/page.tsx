@@ -76,6 +76,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
                 // width={1000}
                 // height={500}
                 fill
+                className="object-center object-cover"
               />
             </div>
           )}
