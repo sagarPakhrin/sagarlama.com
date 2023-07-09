@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import Sagar from '@/assets/images/Sagar Lama.png';
+import { recentPosts } from '@/utils/posts';
+import { Post } from 'contentlayer/generated';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const description =
   'Sagar Lama is a fullstack software developer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript';
@@ -16,6 +19,14 @@ export const metadata = {
     title: 'Sagar Lama',
     description,
   },
+};
+
+const PostCard = ({ post }: { post: Post }) => {
+  return (
+    <Link href={`/post/${post.slug}`} className="flex-1 w-full lg:w-1/3">
+      <div className="">{post.title}</div>
+    </Link>
+  );
 };
 
 export default function Home() {
@@ -48,6 +59,20 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <section className="bg-gray-100">
+        <div className="container py-10 md:py-16 lg:py-32 px-4">
+          <div className="">
+            <h2 className="font-semibold text-3xl text-center">Recent Posts</h2>
+          </div>
+          <div className="mt-10">
+            <div className="w-full flex flex-wrap gap-4">
+              {recentPosts.map((post) => (
+                <PostCard post={post} key={post.slug} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       {/*
       <div className="py-10 md:py-16 lg:py-32 bg-gray-100">
         <div className="mx-auto container flex justify-center">

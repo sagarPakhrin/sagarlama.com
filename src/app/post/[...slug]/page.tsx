@@ -32,14 +32,14 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
     }),
   };
 
-  const metadata = {
+  return {
+    metadataBase: new URL('https://sagarlama.com'),
     title: post.title,
     description: post.description,
     keywords: post.metakeywords ?? '',
     openGraph: og,
     twitter: og,
   };
-  return metadata;
 };
 
 const getBlogFromSlug = async (slug: PostLayoutProps['slug']) => {
