@@ -25,14 +25,14 @@ const PostCard = ({ post }: { post: Post }) => {
   return (
     <Link
       href={`${post.slug}`}
-      className="flex-1 min-w-[288px] max-w-full shadow rounded"
+      className="flex-1 min-w-[288px] max-w-full shadow rounded group hover:shadow-md transition duration-300 ease-in-out overflow-hidden"
     >
       <Image
         src={post.cover_image}
         alt={post.title}
         width={600}
         height={400}
-        className="rounded-t-md w-full h-48 lg:h-60 object-cover object-center"
+        className="rounded-t-md w-full h-48 lg:h-60 object-cover object-center group-hover:scale-105 transition duration-300 ease-in-out"
       />
       <div className="px-4 py-6">
         <h2 className="text-xl font-bold line-clamp-2">{post.title}</h2>
