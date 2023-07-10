@@ -68,7 +68,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
             {post.tags?.map((tag) => (
               <span
                 key={tag}
-                className="px-2 bg-gray-200 rounded-full text-sm py-1 text-gray-700"
+                className="px-3 bg-gray-200 rounded-full text-sm py-1 text-gray-700"
               >
                 {tag}
               </span>
@@ -77,14 +77,14 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
         </header>
         <div className="mt-4">
           {post.cover_image && (
-            <div className="w-full h-96 relative">
+            <div className="w-full h-56 md:h-64 lg:h-96 relative">
               <Image
                 src={post.cover_image}
                 alt={post.title}
                 // width={1000}
                 // height={500}
                 fill
-                className="object-center object-cover"
+                className="object-center object-cover rounded-md"
               />
             </div>
           )}

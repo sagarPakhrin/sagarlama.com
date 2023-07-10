@@ -23,8 +23,23 @@ export const metadata = {
 
 const PostCard = ({ post }: { post: Post }) => {
   return (
-    <Link href={`/post/${post.slug}`} className="flex-1 w-full lg:w-1/3">
-      <div className="">{post.title}</div>
+    <Link
+      href={`${post.slug}`}
+      className="flex-1 min-w-[288px] max-w-full shadow rounded"
+    >
+      <Image
+        src={post.cover_image}
+        alt={post.title}
+        width={600}
+        height={400}
+        className="rounded-t-md w-full h-48 lg:h-60 object-cover object-center"
+      />
+      <div className="px-4 py-6">
+        <h2 className="text-xl font-bold line-clamp-2">{post.title}</h2>
+        <p className="mt-2 text-sm text-gray-700 line-clamp-3">
+          {post.description}
+        </p>
+      </div>
     </Link>
   );
 };
@@ -60,7 +75,7 @@ export default function Home() {
         </div>
       </div>
       <section className="bg-gray-100">
-        <div className="container py-10 md:py-16 lg:py-32 px-4">
+        <div className="container py-10 md:py-16 lg:py-24 px-4">
           <div className="">
             <h2 className="font-semibold text-3xl text-center">Recent Posts</h2>
           </div>

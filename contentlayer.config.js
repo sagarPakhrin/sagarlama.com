@@ -41,7 +41,7 @@ export const Post = defineDocumentType(() => ({
     metadata: { type: 'string', required: false },
     metadescription: { type: 'string', required: false },
     metakeywords: { type: 'string', required: false },
-    cover_image: { type: 'string', required: false },
+    cover_image: { type: 'string', required: true },
     tags: {
       type: 'list',
       of: { type: 'string' },
