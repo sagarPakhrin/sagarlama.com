@@ -39,7 +39,7 @@ export const Post = defineDocumentType(() => ({
     published: { type: 'boolean', required: true },
     // exerpt: { type: 'string', required: true },
     metadata: { type: 'string', required: false },
-    metadescription: { type: 'string', required: false },
+    metadescription: { type: 'string', required: true },
     metakeywords: { type: 'string', required: false },
     cover_image: { type: 'string', required: true },
     tags: {

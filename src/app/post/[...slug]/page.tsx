@@ -18,7 +18,7 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
 
   const og = {
     title: post.title,
-    description: post.description,
+    description: post.metadescription,
     // spread only if cover_image exists
     ...(post.cover_image && {
       images: [
@@ -35,7 +35,7 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   return {
     metadataBase: new URL('https://sagarlama.com'),
     title: post.title,
-    description: post.description,
+    description: post.metadescription,
     keywords: post.metakeywords ?? '',
     openGraph: og,
     twitter: og,
@@ -46,7 +46,30 @@ const getBlogFromSlug = async (slug: PostLayoutProps['slug']) => {
   const post = allPosts.find((p) => {
     return p._raw.flattenedPath === slug.join('/');
   });
-  if (!post || !post.published) notFound();
+
+  const isDev = process.env.NODE_ENV === 'development';
+
+  // if no post, 404
+  // if post is not published and not in dev mode, 404
+  // else return post
+
+  if (!post || (!isDev && !post.published)) {
+    notFound();
+  }
+
+  /*
+
+   if (!post) {
+    notFound();
+   } else if(isDev) {
+      return post;
+   } else if (!post.published) {
+      notFound();
+   }
+   return post
+
+   */
+
   return post;
 };
 

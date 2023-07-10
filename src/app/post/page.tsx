@@ -46,7 +46,10 @@ function PostCard(post: Post) {
 
 const Posts = () => {
   const posts = allPosts
-    .filter((post) => post.published)
+    .filter((post) => {
+      if (process.env.NODE_ENV === 'development') return true;
+      return post.published;
+    })
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
