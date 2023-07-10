@@ -64,6 +64,16 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
             </time>
             <span>{post.readingTime.text}</span>
           </div>
+          <div className="mt-3 flex gap-2">
+            {post.tags?.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 bg-gray-200 rounded-full text-sm py-1 text-gray-700"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </header>
         <div className="mt-4">
           {post.cover_image && (

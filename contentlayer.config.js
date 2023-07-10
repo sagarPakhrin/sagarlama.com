@@ -1,5 +1,9 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -38,6 +42,10 @@ export const Post = defineDocumentType(() => ({
     metadescription: { type: 'string', required: false },
     metakeywords: { type: 'string', required: false },
     cover_image: { type: 'string', required: false },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+    },
   },
   computedFields,
 }));
