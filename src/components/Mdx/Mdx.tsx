@@ -64,7 +64,7 @@ const components = {
   a: ({ className, ...props }: { className: string }) => (
     <a
       className={classNames(
-        'font-medium underline underline-offset-4',
+        'font-medium underline underline-offset-4 hover:text-blue-700',
         className
       )}
       {...props}
