@@ -39,10 +39,15 @@ sudo apt install stow
 Right now, our configurations live all over the place and it's difficult to keep track of it. 
 So we will move them to a single folder where we can track it with git.  
 
-**Create a directory**
 ```sh
 mkdir ~/.dotfiles
 cd ~/.dotfiles
+git init
 ```
 
-I like to keep
+I like to keep my dotfiles folder hidden so I'll name it as `.dotfiles`.  
+
+To keep the contents of the blog limited, we will just backup `bash` and `neovim`. 
+One with a simple folder and another with nested folder structure
+
+

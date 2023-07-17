@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import Sagar from '@/assets/images/Sagar Lama.png';
+import { classNames } from '@/utils/class-names';
 import { recentPosts } from '@/utils/posts';
 import { Post } from 'contentlayer/generated';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const description =
   'Sagar Lama is a fullstack software developer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript';
@@ -22,18 +24,26 @@ export const metadata = {
 };
 
 const PostCard = ({ post }: { post: Post }) => {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
   return (
     <Link
-      href={`${post.slug}`}
+      href={`${baseUrl}${post.slug}`}
       className="flex-1 min-w-[288px] max-w-full shadow rounded group hover:shadow-md transition duration-300 ease-in-out overflow-hidden"
     >
-      <Image
-        src={post.cover_image}
-        alt={post.title}
-        width={600}
-        height={400}
-        className="rounded-t-md w-full h-48 lg:h-60 object-cover object-center group-hover:scale-105 transition duration-300 ease-in-out"
-      />
+      <div className="h-48 lg:h-60  w-full relative overflow-hidden">
+        <Image
+          src={post.cover_image}
+          alt={post.title}
+          width={600}
+          height={240}
+          className={classNames(
+            'rounded-t-md w-full h-full object-cover object-center',
+            'group-hover:scale-105 transition duration-300 ease-in-out'
+          )}
+        />
+        <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />
+      </div>
       <div className="px-4 py-6">
         <h2 className="text-xl font-bold line-clamp-2">{post.title}</h2>
         <p className="mt-2 text-sm text-gray-700 line-clamp-3">
