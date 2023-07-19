@@ -1,7 +1,7 @@
 ---
 title: Managing dotfiles using stow and git
 description: In this blog post we will learn what dotfiles are and how to manage them using stow and git
-date: 07-12-2023
+date: 07-20-2023
 cover_image: https://res.cloudinary.com/dmvjadwhx/image/upload/v1688275645/formatting_nestjs_validation_errors_nr2zi8.png
 metakeywords: dotfiles, stow, git, dotfiles in git, productivity, developer productivity, increase developer productivity 
 metadescription: How to manage dotfiles and backup dotfiles with stow and git
@@ -47,7 +47,43 @@ git init
 
 I like to keep my dotfiles folder hidden so I'll name it as `.dotfiles`.  
 
-To keep the contents of the blog limited, we will just backup `bash` and `neovim`. 
-One with a simple folder and another with nested folder structure
+We will start with a simple example with begin with. Let's create a directory named `bash` inside our `.dotfiles`
 
+```sh
+mkdir bash
+cd bash
+```
 
+*This `bash` folder will act like the home directory for bash and we need to create the exact folder structure* 
+If you run `ls ~/` you will see `.bashrc` right in the home directory. So we will also create a file inside `.dotfiles/bash`
+
+```sh 
+touch .bashrc
+```
+
+Let's repeate the same steps for gitconfig
+
+```sh
+cd ~/.dotfiles
+mkdir git
+cd git 
+touch .gitconfig
+```
+
+We created a git folder inside `.dotfiles`, cd into the folder, since the `.gitconfig` was at the home folder, we created `.gitconfig` right inside `git folder`
+
+To see how you can do the same thing for nested folder, let's repeat the same process for `neovim`. 
+```sh
+cd ~/.dotfiles
+mkdir nvim
+```
+
+You can call this folder anything you like, `nvim` or `neovim`. The important part is the structure inside this folder.
+Neovim config is normally kept inside `~/.config/nvim` folder. If  you run `ls -la ~/.config/nvim` you most likely will have `init.lua` and some other files depending on how you've setup neovim.
+Since we will treat the `nvim` folder as the home directory, we will create the `.config/nvim` folder inside `nvim folder`
+
+```sh
+mkdir .config
+cd .config
+mkdir nvim
+```

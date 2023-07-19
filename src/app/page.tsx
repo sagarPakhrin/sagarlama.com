@@ -5,14 +5,16 @@ import { recentPosts } from '@/utils/posts';
 import { Post } from 'contentlayer/generated';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 const description =
   'Sagar Lama is a fullstack software developer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript';
+const keywords =
+  'Sagar, Lama, Sagar Lama, software engineer, fullstack developer, typescript, javascript';
 
 export const metadata = {
   title: 'Sagar Lama',
   description,
+  keywords,
   openGraph: {
     title: 'Sagar Lama',
     description,
