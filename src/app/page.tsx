@@ -3,6 +3,7 @@ import Sagar from '@/assets/images/Sagar Lama.png';
 import { classNames } from '@/utils/class-names';
 import { recentPosts } from '@/utils/posts';
 import { Post } from 'contentlayer/generated';
+import { formatDistance, formatDistanceToNow } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -28,10 +29,12 @@ export const metadata = {
 const PostCard = ({ post }: { post: Post }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
+  const timeAgo = formatDistanceToNow(new Date(post.date));
+
   return (
     <Link
       href={`${baseUrl}${post.slug}`}
-      className="flex-1 min-w-[288px] max-w-full shadow rounded group hover:shadow-md transition duration-300 ease-in-out overflow-hidden"
+      className="flex-1 min-w-[288px] max-w-full shadow rounded-lg group hover:shadow-md transition duration-300 ease-in-out overflow-hidden"
     >
       <div className="h-48 lg:h-60  w-full relative overflow-hidden">
         <Image
@@ -40,14 +43,19 @@ const PostCard = ({ post }: { post: Post }) => {
           width={600}
           height={240}
           className={classNames(
-            'rounded-t-md w-full h-full object-cover object-center',
+            'rounded-t-lg w-full h-full object-cover object-center',
             'group-hover:scale-105 transition duration-300 ease-in-out'
           )}
         />
         <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />
       </div>
-      <div className="px-4 py-6">
-        <h2 className="text-xl font-bold line-clamp-2">{post.title}</h2>
+      <div className="px-4 py-4">
+        <div className="">
+          <span className="text-sm text-gray-600 font-semibold">
+            {timeAgo} ago
+          </span>
+        </div>
+        <h2 className="mt-2 text-xl font-bold line-clamp-2">{post.title}</h2>
         <p className="mt-2 text-sm text-gray-700 line-clamp-3">
           {post.description}
         </p>
