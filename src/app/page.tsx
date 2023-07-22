@@ -29,7 +29,9 @@ export const metadata = {
 const PostCard = ({ post }: { post: Post }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
-  const timeAgo = formatDistanceToNow(new Date(post.date));
+  const timeAgo = formatDistanceToNow(new Date(post.date), {
+    addSuffix: true,
+  });
 
   return (
     <Link
@@ -50,11 +52,10 @@ const PostCard = ({ post }: { post: Post }) => {
         <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />
       </div>
       <div className="px-4 py-4">
-        <div className="">
-          <span className="text-sm text-gray-600 font-semibold">
-            {timeAgo} ago
-          </span>
-        </div>
+        {/*
+       <div className="">
+          <span className="text-sm text-gray-600 font-semibold">{timeAgo}</span>
+        </div> */}
         <h2 className="mt-2 text-xl font-bold line-clamp-2">{post.title}</h2>
         <p className="mt-2 text-sm text-gray-700 line-clamp-3">
           {post.description}
