@@ -39,11 +39,12 @@ export const Navbar = () => {
     },
   ];
   return (
-    <header>
+    <header
+      className={classNames(sticky ? 'sticky top-0 left-0 z-30' : 'relative')}
+    >
       <nav
         className={classNames(
-          'px-8 py-4 flex items-center justify-between text-sm gap-4 text-gray-300 bg-gray-900',
-          sticky ? 'sticky top-0 left-0 z-30' : 'relative'
+          'px-8 py-4 flex items-center justify-between text-sm gap-4 text-gray-300 bg-gray-900'
         )}
       >
         <Link href="/" className="font-medium text-2xl">
