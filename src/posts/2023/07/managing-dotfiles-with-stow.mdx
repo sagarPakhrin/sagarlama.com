@@ -5,7 +5,7 @@ date: 07-20-2023
 cover_image: https://res.cloudinary.com/dmvjadwhx/image/upload/v1689966967/managing_dotfiles_with_stow_and_git_yvccnn.png
 metakeywords: dotfiles, stow, git, dotfiles in git, productivity, developer productivity, increase developer productivity 
 metadescription: How to manage dotfiles and backup dotfiles with stow and git
-tags: ["productivity", "tools"]
+tags: ["productivity", "dotfiles", "stow"]
 published: false
 ---
 
@@ -86,4 +86,34 @@ Since we will treat the `nvim` folder as the home directory, we will create the 
 mkdir .config
 cd .config
 mkdir nvim
+```
+
+### Setup Symlinks
+
+Now that our directories are in place, let's start moving our dotfiles into our `.dotfiles` directory. We will stow to move the files and create symlinks automatically.  
+
+```sh
+cd ~/.dotfiles
+stow --adopt -nvt ~ bash
+```
+
+Let's look at what happened. We're telling stow to start managing the bash. But since we gave `-n` we just ran it in simulation mode. You will get the following in the terminal. 
+```sh
+MV: .bashrc -> .dotfiles/bash/.bashrc
+LINK: .bashrc => .dotfiles/bash/.bashrc
+WARNING: in simulation mode so not modifying filesystem.
+```
+Let's run the same command without `-n`
+
+```sh
+cd ~/.dotfiles
+stow --adopt -vt ~ bash
+```
+
+Now if we run `ls ~/` you will see that your `.bashrc` is pointing to `~/.dotfiles/bash/.bashrc` 
+
+Let's stow the rest of the dotfiles as well
+
+```sh
+stow --adopt -vt ~ nvim
 ```
