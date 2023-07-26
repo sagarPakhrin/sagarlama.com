@@ -84,7 +84,7 @@ export default function Home() {
           </h2>
           <p className="mt-5 lg:text-lg text-gray-400">
             A fullstack developer based in Kathmandu, Nepal, Passionate about
-            building stuffs new stuffs keeping industry best practises in mind.
+            building new stuffs keeping industry best practises in mind.
           </p>
           <div className="flex gap-5 mt-5 text-slate-400">
             <Link
