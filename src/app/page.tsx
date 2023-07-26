@@ -1,9 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
+import Github from '@/assets/icons/github.svg';
+import Instagram from '@/assets/icons/instagram.svg';
+import Twitter from '@/assets/icons/twitter.svg';
+import Linkedin from '@/assets/icons/linkedin.svg';
 import Sagar from '@/assets/images/Sagar Lama.png';
 import { classNames } from '@/utils/class-names';
 import { recentPosts } from '@/utils/posts';
 import { Post } from 'contentlayer/generated';
-import { formatDistance, formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -69,19 +73,49 @@ export default function Home() {
   return (
     <main className="">
       <div className="bg-gray-900 py-12 px-4 lg:px-28 flex flex-wrap w-full text-white items-center">
-        <div className="w-full lg:w-3/5 xl:pr-44">
-          <h1 className="text-4xl lg:text-5xl xl:text-8xl font-bold">
-            {' '}
-            Sagar Lama
+        <div className="mx-auto w-2/3 md:3/5 lg:w-3/5 xl:pr-44">
+          <h1 className="text-4xl lg:tex-5xl xl:text-7xl font-bold">
+            Hi,
+            <br />
+            I'm Sagar Lama
           </h1>
-          <h2 className="mt-3 text-lg md:text-2xl text-gray-200 font-poppins">
-            Fullstack Software Developer
+          <h2 className="mt-6 text-lg md:text-2xl text-gray-200 font-poppins">
+            Full Stack Developer
           </h2>
-          <p className="mt-2 text-sm lg:text-base text-gray-400">
-            Hey, I'm a software developer based in Kathmandu, Nepal. I'm
-            passionate about building stuffs for the web keeping industry best
-            practises in mind and ocassionally write about it.
+          <p className="mt-5 lg:text-lg text-gray-400">
+            A fullstack developer based in Kathmandu, Nepal, Passionate about
+            building stuffs new stuffs keeping industry best practises in mind.
           </p>
+          <div className="flex gap-5 mt-5 text-slate-400">
+            <Link
+              href="https://github.com/sagarPakhrin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-6 w-6" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/sagarllp/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="h-6 w-6" />
+            </Link>
+            <Link
+              href="https://twitter.com/sagarllp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Twitter className="h-6 w-6" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/sagarllp/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="h-6 w-6" />
+            </Link>
+          </div>
         </div>
         <div className="hidden lg:block w-full lg:w-2/5">
           <div className="h-400 2xl:h-[800px] bg-slate-300 relative flex items-end justify-center rounded-3xl">
