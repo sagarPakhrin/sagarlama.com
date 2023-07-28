@@ -14,7 +14,7 @@ published: true
 Dotfiles are plain text configuration files for most of the applications of unix-like systems. 
 These files begin with a dot(`.`) and are hidden by default. The preferences and configurations you've made gets saved in the dotfiles.  
 If you run `ls -a ~/` you will see a list of dotfiles in your home directory.
-In this blog post we will learn how to backup and seamlessly replicate your configurations using git and [GNU Stow](https://www.gnu.org/software/stow/ ).
+In this blog post we will learn how to backup and seamlessly replicate your configurations using git and [GNU Stow](https://www.gnu.org/software/stow/ ) by creating appropriate symlinks.
 
 ### Why backup dotfiles?
 
@@ -30,8 +30,13 @@ Stow is going to help us create symlinks in the correct paths without having to 
 Let's start by installing stow
 
 ```bash
+# ubuntu
 sudo apt install stow
+# mac
+brew install stow
 ```
+
+_Note: If you use any other linux distros use respective package manager to install stow_
 
 
 ### Organizing your dotfiles
@@ -92,7 +97,9 @@ stow -vt ~ nvim
 Again if you run `ls ~/.config -la`  you should see that `nvim` folder points to the one in the dotfiles.
 One thing to note is that stow does not overried the existing files and folders. So be sure to remove or rename the files and folders. 
 
-Now let's commit the files and push it to github. Next time wherever you want to replicate the config. Just clone the repository and run `stow <package_name>` and the appropriate symlinks will be created automatically
+Now let's commit the files and push it to github. 
+Next time wherever you want to replicate the config, 
+you just need to clone the repository and run `stow <package_name>` e.g `stow bash` and the appropriate symlinks will be created automatically
 
 ### Conclusion
 
