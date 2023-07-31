@@ -33,10 +33,6 @@ export const metadata = {
 const PostCard = ({ post }: { post: Post }) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
-  const timeAgo = formatDistanceToNow(new Date(post.date), {
-    addSuffix: true,
-  });
-
   return (
     <Link
       href={`${baseUrl}${post.slug}`}
@@ -50,7 +46,7 @@ const PostCard = ({ post }: { post: Post }) => {
           height={240}
           className={classNames(
             'rounded-t-lg w-full h-full object-cover object-center',
-            'group-hover:scale-105 transition duration-300 ease-in-out'
+            'group-hover:scale-105 transition duration-700 ease-in-out',
           )}
         />
         <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />
@@ -79,9 +75,6 @@ export default function Home() {
             <br />
             I'm Sagar Lama
           </h1>
-          <h2 className="mt-6 text-lg md:text-2xl text-gray-200 font-poppins">
-            Full Stack Developer
-          </h2>
           <p className="mt-5 lg:text-lg text-gray-400">
             A fullstack developer based in Kathmandu, Nepal, Passionate about
             building new stuffs keeping industry best practises in mind.
