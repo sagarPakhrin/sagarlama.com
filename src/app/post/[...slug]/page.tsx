@@ -1,18 +1,18 @@
-import Mdx from '@/components/Mdx';
-import { allPosts } from 'contentlayer/generated';
-import { format, parseISO } from 'date-fns';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import Mdx from "@/components/Mdx";
+import { allPosts } from "contentlayer/generated";
+import { format, parseISO } from "date-fns";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export interface PostLayoutProps {
   slug: string[];
 }
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath.split('/') }));
+  allPosts.map((post) => ({ slug: post._raw.flattenedPath.split("/") }));
 
 export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
-  const slug = params.slug.join('/');
+  const slug = ["post", ...params.slug].join("/");
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
   if (!post) notFound();
 
@@ -23,7 +23,7 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
     ...(post.cover_image && {
       images: [
         {
-          url: post.cover_image ?? '',
+          url: post.cover_image ?? "",
           width: 1200,
           height: 630,
           alt: post.title,
@@ -33,21 +33,22 @@ export const generateMetadata = ({ params }: { params: PostLayoutProps }) => {
   };
 
   return {
-    metadataBase: new URL('https://sagarlama.com'),
+    metadataBase: new URL("https://sagarlama.com"),
     title: post.title,
     description: post.metadescription,
-    keywords: post.metakeywords ?? '',
+    keywords: post.metakeywords ?? "",
     openGraph: og,
     twitter: og,
   };
 };
 
-const getBlogFromSlug = async (slug: PostLayoutProps['slug']) => {
+const getBlogFromSlug = async (slug: PostLayoutProps["slug"]) => {
+  const parsed_slug = ["post", ...slug].join("/");
   const post = allPosts.find((p) => {
-    return p._raw.flattenedPath === slug.join('/');
+    return p._raw.flattenedPath === parsed_slug;
   });
 
-  const isDev = process.env.NODE_ENV === 'development';
+  const isDev = process.env.NODE_ENV === "development";
 
   // if no post, 404
   // if post is not published and not in dev mode, 404
@@ -83,7 +84,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
           <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
           <div className="mt-2 flex items-center text-sm text-gray-600 gap-4">
             <time dateTime={post.date} className="">
-              {format(parseISO(post.date), 'LLLL d, yyyy')}
+              {format(parseISO(post.date), "LLLL d, yyyy")}
             </time>
             <span>{post.readingTime.text}</span>
           </div>

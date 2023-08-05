@@ -1,19 +1,19 @@
-import { Post, allPosts } from 'contentlayer/generated';
-import { compareDesc, format, parseISO } from 'date-fns';
-import Link from 'next/link';
+import { Post, allPosts } from "contentlayer/generated";
+import { compareDesc, format, parseISO } from "date-fns";
+import Link from "next/link";
 
 // nextjs metadata
 
 export const metadata = {
-  title: 'Sagar Lama | Posts',
-  description: 'Read my latest posts on software development and more.',
+  title: "Sagar Lama | Posts",
+  description: "Read my latest posts on software development and more.",
   openGraph: {
-    title: 'Sagar Lama | Posts',
-    description: 'Read my latest posts on software development and more.',
+    title: "Sagar Lama | Posts",
+    description: "Read my latest posts on software development and more.",
   },
   twitter: {
-    title: 'Sagar Lama | Posts',
-    description: 'Read my latest posts on software development and more.',
+    title: "Sagar Lama | Posts",
+    description: "Read my latest posts on software development and more.",
   },
 };
 
@@ -27,7 +27,7 @@ function PostCard(post: Post) {
       </h2>
       <div className="flex items-center gap-3  text-sm text-gray-600">
         <time dateTime={post.date}>
-          {format(parseISO(post.date), 'LLLL d, yyyy')}
+          {format(parseISO(post.date), "LLLL d, yyyy")}
         </time>
         <span className="text-sm">{post.readingTime.text}</span>
       </div>
@@ -47,7 +47,7 @@ function PostCard(post: Post) {
 const Posts = () => {
   const posts = allPosts
     .filter((post) => {
-      if (process.env.NODE_ENV === 'development') return true;
+      if (process.env.NODE_ENV === "development") return true;
       return post.published;
     })
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));

@@ -1,31 +1,31 @@
 /* eslint-disable react/no-unescaped-entities */
-import Github from '@/assets/icons/github.svg';
-import Instagram from '@/assets/icons/instagram.svg';
-import Twitter from '@/assets/icons/twitter.svg';
-import Linkedin from '@/assets/icons/linkedin.svg';
-import Sagar from '@/assets/images/Sagar Lama.png';
-import { classNames } from '@/utils/class-names';
-import { recentPosts } from '@/utils/posts';
-import { Post } from 'contentlayer/generated';
-import { formatDistanceToNow } from 'date-fns';
-import Image from 'next/image';
-import Link from 'next/link';
+import Github from "@/assets/icons/github.svg";
+import Instagram from "@/assets/icons/instagram.svg";
+import Twitter from "@/assets/icons/twitter.svg";
+import Linkedin from "@/assets/icons/linkedin.svg";
+import Sagar from "@/assets/images/Sagar Lama.png";
+import { classNames } from "@/utils/class-names";
+import { recentPosts } from "@/utils/posts";
+import { Post } from "contentlayer/generated";
+import { formatDistanceToNow } from "date-fns";
+import Image from "next/image";
+import Link from "next/link";
 
 const description =
-  'Sagar Lama is a fullstack software developer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript';
+  "Sagar Lama is a fullstack software developer based in Kathmandu, Nepal who loves to build stuffs for the web using javascript and typescript";
 const keywords =
-  'Sagar, Lama, Sagar Lama, software engineer, fullstack developer, typescript, javascript';
+  "Sagar, Lama, Sagar Lama, software engineer, fullstack developer, typescript, javascript";
 
 export const metadata = {
-  title: 'Sagar Lama',
+  title: "Sagar Lama",
   description,
   keywords,
   openGraph: {
-    title: 'Sagar Lama',
+    title: "Sagar Lama",
     description,
   },
   twitter: {
-    title: 'Sagar Lama',
+    title: "Sagar Lama",
     description,
   },
 };
@@ -45,8 +45,8 @@ const PostCard = ({ post }: { post: Post }) => {
           width={600}
           height={240}
           className={classNames(
-            'rounded-t-lg w-full h-full object-cover object-center',
-            'group-hover:scale-105 transition duration-700 ease-in-out',
+            "rounded-t-lg w-full h-full object-cover object-center",
+            "group-hover:scale-105 transition duration-700 ease-in-out"
           )}
         />
         <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />

@@ -1,53 +1,56 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import readingTime from 'reading-time';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import readingTime from "reading-time";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
-    type: 'string',
-    resolve: (doc) => `/post/${doc._raw.flattenedPath}`,
+    type: "string",
+    resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
   readingTime: {
-    type: 'json',
+    type: "json",
     resolve: (doc) => {
       return readingTime(doc.body.raw);
     },
   },
   slugAsParams: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
+    type: "string",
+    // resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => {
+      return doc._raw.flattenedPath.split("/").slice(1).join("/");
+    },
   },
 };
 
 export const Post = defineDocumentType(() => ({
-  name: 'Post',
-  filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
+  name: "Post",
+  filePathPattern: `post/**/*.mdx`,
+  contentType: "mdx",
   fields: {
-    title: { type: 'string', required: true },
-    description: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    published: { type: 'boolean', required: true },
+    title: { type: "string", required: true },
+    description: { type: "string", required: true },
+    date: { type: "date", required: true },
+    published: { type: "boolean", required: true },
     // exerpt: { type: 'string', required: true },
-    metadata: { type: 'string', required: false },
-    metadescription: { type: 'string', required: true },
-    metakeywords: { type: 'string', required: false },
-    cover_image: { type: 'string', required: true },
+    metadata: { type: "string", required: false },
+    metadescription: { type: "string", required: true },
+    metakeywords: { type: "string", required: false },
+    cover_image: { type: "string", required: true },
     tags: {
-      type: 'list',
-      of: { type: 'string' },
+      type: "list",
+      of: { type: "string" },
     },
   },
   computedFields,
 }));
 
 export default makeSource({
-  contentDirPath: 'src/posts',
+  contentDirPath: "src",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -56,18 +59,18 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'github-dark',
+          theme: "github-dark",
           onVisitLine: (node) => {
             // prevent line from collapsing in display: grid mode and allow empty
             if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }];
+              node.children = [{ type: "text", value: " " }];
             }
           },
           onVisitHighlightedLine: (node) => {
-            node.properties.className = ['line--highlighted'];
+            node.properties.className = ["line--highlighted"];
           },
           onVisitHighlightedWord: (node) => {
-            node.properties.className = ['word--highlighted'];
+            node.properties.className = ["word--highlighted"];
           },
         },
       ],
@@ -75,8 +78,8 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['subheading-anchor'],
-            ariaLabel: 'Link to section',
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
           },
         },
       ],
