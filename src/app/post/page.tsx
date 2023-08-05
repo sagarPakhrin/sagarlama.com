@@ -45,10 +45,17 @@ function PostCard(post: Post) {
 }
 
 const Posts = () => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://sagarlama.com";
   const posts = allPosts
     .filter((post) => {
       if (process.env.NODE_ENV === "development") return true;
       return post.published;
+    })
+    .map((post) => {
+      return {
+        ...post,
+        slug: `${baseUrl}${post.slug}`,
+      };
     })
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
