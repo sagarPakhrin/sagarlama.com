@@ -4,6 +4,7 @@ import Instagram from "@/assets/icons/instagram.svg";
 import Twitter from "@/assets/icons/twitter.svg";
 import Linkedin from "@/assets/icons/linkedin.svg";
 import Sagar from "@/assets/images/Sagar Lama.png";
+import Og from "@/assets/images/og.png";
 import { classNames } from "@/utils/class-names";
 import { recentPosts } from "@/utils/posts";
 import { Post } from "contentlayer/generated";
@@ -24,7 +25,7 @@ export const metadata = {
     description,
     images: [
       {
-        url: Sagar.src,
+        url: Og.src,
         width: 1200,
         height: 630,
         alt: "Sagar Lama",
@@ -36,7 +37,7 @@ export const metadata = {
     description,
     images: [
       {
-        url: Sagar.src,
+        url: Og.src,
         width: 1200,
         height: 630,
         alt: "Sagar Lama",
