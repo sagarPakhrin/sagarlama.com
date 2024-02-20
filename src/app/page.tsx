@@ -7,7 +7,6 @@ import Sagar from "@/assets/images/Sagar Lama.png";
 import { classNames } from "@/utils/class-names";
 import { recentPosts } from "@/utils/posts";
 import { Post } from "contentlayer/generated";
-import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,10 +22,26 @@ export const metadata = {
   openGraph: {
     title: "Sagar Lama",
     description,
+    images: [
+      {
+        url: Sagar.src,
+        width: 1200,
+        height: 630,
+        alt: "Sagar Lama",
+      },
+    ],
   },
   twitter: {
     title: "Sagar Lama",
     description,
+    images: [
+      {
+        url: Sagar.src,
+        width: 1200,
+        height: 630,
+        alt: "Sagar Lama",
+      },
+    ],
   },
 };
 
@@ -46,7 +61,7 @@ const PostCard = ({ post }: { post: Post }) => {
           height={240}
           className={classNames(
             "rounded-t-lg w-full h-full object-cover object-center",
-            "group-hover:scale-105 transition duration-700 ease-in-out"
+            "group-hover:scale-105 transition duration-700 ease-in-out",
           )}
         />
         <div className="bg-black z-10 absolute h-full w-full top-0 left-0 bg-opacity-30 group-hover:bg-opacity-10 transition duration-300" />
