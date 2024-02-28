@@ -11,7 +11,7 @@ export const Comments = () => {
     url: "https://utteranc.es/client.js",
     theme: "github-light",
     issueTerm: "url",
-    repo: "skarthikeyan96/next-blog-utterances",
+    repo: "sagarPakhrin/sagarlama.com",
     ref: comment,
   });
 
