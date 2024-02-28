@@ -1,3 +1,4 @@
+import Comment from "@/components/Comment/Comment";
 import Mdx from "@/components/Mdx";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
@@ -118,6 +119,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
           <Mdx code={post.body.code} />
         </div>
       </article>
+      <Comment />
     </div>
   );
 };
