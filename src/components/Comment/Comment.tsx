@@ -9,7 +9,7 @@ export const Comments = () => {
 
   const _status = useScript({
     url: "https://utteranc.es/client.js",
-    theme: "github-dark",
+    theme: "github-light",
     issueTerm: "url",
     repo: "skarthikeyan96/next-blog-utterances",
     ref: comment,
