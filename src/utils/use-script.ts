@@ -29,7 +29,7 @@ export const useScript = (params: Params) => {
     script.setAttribute("repo", repo);
 
     // Add script to document body
-    ref?.current.appendChild(script);
+    ref?.current?.appendChild(script);
 
     // store status of the script
 
