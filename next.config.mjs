@@ -1,3 +1,6 @@
+// next.config.js
+import { withContentlayer } from "next-contentlayer";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config) {
@@ -27,6 +30,20 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/dmvjadwhx/image/upload/**",
+      },
+      {
+        protocol: "https",
+        hostname: "substackcdn.com",
+        pathname: "/image/fetch/**",
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);

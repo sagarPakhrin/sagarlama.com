@@ -1,0 +1,107 @@
+---
+title: Managing dotfiles using stow and git
+description: In this blog post we will learn what dotfiles are and how to manage them using stow and git
+date: 07-23-2023
+cover_image: https://res.cloudinary.com/dmvjadwhx/image/upload/v1689966967/managing_dotfiles_with_stow_and_git_yvccnn.png
+metakeywords: dotfiles, stow, git, dotfiles in git, productivity, developer productivity, increase developer productivity 
+metadescription: How to manage dotfiles and backup dotfiles with stow and git
+tags: ["productivity", "dotfiles", "stow"]
+published: true
+---
+
+### What are dotfiles?
+
+Dotfiles are plain text configuration files for most of the applications of unix-like systems. 
+These files begin with a dot(`.`) and are hidden by default. The preferences and configurations you've made gets saved in the dotfiles.  
+If you run `ls -a ~/` you will see a list of dotfiles in your home directory.
+In this blog post we will learn how to backup and seamlessly replicate your configurations using git and [GNU Stow](https://www.gnu.org/software/stow/ ) by creating appropriate symlinks.
+
+### Why backup dotfiles?
+
+Wether you want to replicate your configurations on multiple machines, you want to share your config with others, or you just want to backup your config so it doesn't get lost,
+no matter the reason, you can still manage your dotfiles with git and stow.
+
+### What is a Symlink
+Symbolic Link also known as symlink is simply a shortcut to another file. It is a file that points to another file.
+
+### Install Stow
+
+Stow is going to help us create symlinks in the correct paths without having to do it manually.  
+Let's start by installing stow
+
+```bash
+# ubuntu
+sudo apt install stow
+# mac
+brew install stow
+```
+
+_Note: If you use any other linux distros use respective package manager to install stow_
+
+
+### Organizing your dotfiles
+
+We will backup bash and neovim for the sake of the blog post. 
+
+Right now, our configurations live all over the place and it's difficult to keep track of it. 
+So we will move them to a single folder where we can track it with git.  
+
+```sh
+cd ~
+mkdir .dotfiles
+cd .dotfiles
+git init
+```
+
+I like to keep my dotfiles folder hidden so I'll name it as `.dotfiles`.  
+Let's start with moving `.bashrc` to the dotfiles folder 
+
+```sh
+mkdir bash
+```
+
+Currently our `.bashrc` lives in the home directory. Now our newly created folder `~/.dotfiles/bash` will be the home directory for bash dotfiles. 
+```sh 
+mv ~/.bashrc ~/.dotfiles/bash
+mv ~/.bash_aliases ~/.dotfiles/bash
+```
+
+Let's do the same thing with neovim. We will create a new folder `nvim` inside `~/.dotfiles` which will act as home directory for our neovim config. 
+Our neovim config lives inside `~/.config/nvim` so inside our `nvim` folder we also need to create a `.config` folder.
+
+```sh 
+cd ~/.dotfiles
+mkdir -p nvim/.config
+mv ~/.config/nvim ~/.dotfiles/nvim/.config/nvim
+```
+
+We are done with organization our files. Let's use stow to manage the files
+
+```sh
+cd ~/.dotfiles
+stow -vt ~ bash
+```
+
+Here stow has created all the appropriate symlinks for each of the files automatically. You can also just run `stow bash` but `-v` will show what stow is doing and `-t` to make sure we're targetting correct directory .
+If you run `ls ~/ -la` you should see that the bashrc is not pointing to the one in the dotfiles
+```sh
+.bashrc -> .dotfiles/bash/.bashrc
+```
+
+Let's continue the same for neovim
+
+```sh
+stow -vt ~ nvim
+```
+
+Again if you run `ls ~/.config -la`  you should see that `nvim` folder points to the one in the dotfiles.
+One thing to note is that stow does not overried the existing files and folders. So be sure to remove or rename the files and folders. 
+
+Now let's commit the files and push it to github. 
+Next time wherever you want to replicate the config, 
+you just need to clone the repository and run `stow <package_name>` e.g `stow bash` and the appropriate symlinks will be created automatically
+
+### Conclusion
+
+As a developer who want's to maximize productivity, it's always a good idea to backup and manage your dotfiles. 
+And, managing dotfiles does not have to be daunting task, you can easily centralize all your configurations and effortlessly replicate them with stow

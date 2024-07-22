@@ -1,0 +1,104 @@
+---
+title: Conditional git configs
+description: In this blog post we will learn how to automatically change git configs based on the directory you are in.
+date: 02-29-2024
+cover_image: https://res.cloudinary.com/dmvjadwhx/image/upload/v1709146274/sagarlama.com/conditional_git_configs_qmv1qm.png
+metakeywords: git, git config, conditional git config, productivity, developer productivity, increase developer productivity
+metadescription: How to change git configs automatically based on the directory you are in.
+tags: ['productivity', 'git']
+published: true
+---
+
+When you initially setup git, you are asked to setup your name and email like this:
+
+```sh
+$ git config --global user.name "Your Name"
+$ git config --global user.email "youremail@example.com"
+```
+
+When you execute the above commands, git stores the name and email in a file called `~/.gitconfig`. This is a global git config file and it is used for all the git repositories on your system.  
+If you have to use multiple git accounts, say one work account and one personal account. You have to manually update the config locally for each repository by executing:
+
+```sh
+$ git config --local user.name "Work git username"
+$ git config --local user.email "workemail@work.com"
+```
+
+This can be a bit cumbersome if you have to do this for multiple repositories. And you might forget to change the config and commit with the wrong credentials.  
+This is where conditional git configs come in. You can set up git to automatically change the config based on the directory you are in.
+
+### How to set up conditional git configs
+
+If you have a habit of [managing your dotfiles](https://www.sagarlama.com/post/2023/07/managing-dotfiles-with-stow) and keep `.gitconfig` in your dotfiles repository, you don't want to accidentally commit your work email and other details to your public dotfiles repository.  
+So we will add the configs to a separate file `~/.gitprofile` which will be included in the main `.gitconfig` file.
+Make sure you **DON'T** commit the `~/.gitprofile` file to your public dotfiles repository.
+
+Create a `~/.gitprofile` file
+
+```sh
+$ cd ~
+$ touch .gitprofile
+```
+
+Edit your `~/.gitconfig` file and add the following lines:
+
+```sh
+[include]
+  path = ~/.gitprofile
+```
+
+This will tell git to include the `~/.gitprofile` file in the main `.gitconfig` file. If you have the `~/.gitprofile` file, it will be included in the main `.gitconfig` file.  
+If you don't have the `~/.gitprofile` file, git will ignore it.
+Here's an example of how the `gitconfig` will look like [https://github.com/sagarPakhrin/.dotfiles/blob/master/git/.gitconfig](https://github.com/sagarPakhrin/.dotfiles/blob/master/git/.gitconfig)
+
+Now in our gitprofile file let's add a default profile.
+
+```sh
+[user]
+  name = Your Name
+  email = youremail@example.com
+```
+
+### Configure work profile
+
+Now let's say you keep all your work repositories in a directory called `~/work`.
+Let's create a work profile inside the work directory.
+
+```sh
+
+$ cd ~/work
+$ touch .gitconfig
+```
+
+Edit the `~/work/.gitconfig` file and add the following lines:
+
+```sh
+[user]
+  name = Work git username
+  email = youremail@work.com
+```
+
+Now we have to tell git to use the `~/work/.gitconfig` file when we are in the `~/work` directory.
+
+Edit the `~/.gitprofile` file and add the following lines:
+
+```sh
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
+```
+
+So your final `~/.gitprofile` file will look something like this:
+
+```sh
+[user]
+  name = Your Name
+  email = youremail@example.com
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
+```
+
+Now when you setup a new repository in the `~/work` directory, git will automatically use the `~/work/.gitconfig` file and use the work email and name.
+
+### Conclusion
+
+You can automatically switch between different git profiles based on the directory you are in using git conditional config.

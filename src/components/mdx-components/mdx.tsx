@@ -4,6 +4,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Code from "@/components/mdx-components/code";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import { Pre } from "./pre";
+import InlineCode from "./inline-code";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   href?: string;
@@ -200,18 +203,15 @@ export const TD = ({
   />
 );
 
-export const PRE = ({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"pre">) => (
-  <pre
-    className={cn(
-      "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black p-4",
-      className,
-    )}
-    {...props}
-  />
-);
+// export const PRE = ({
+//   className,
+//   children,
+//   ...props
+// }: React.ComponentPropsWithoutRef<"pre">) => (
+//   <pre className={cn("mb-4 mt-6", className)} {...props}>
+//     <div>{children}</div>
+//   </pre>
+// );
 
 interface CalloutProps {
   icon?: string;
@@ -288,11 +288,36 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tr: TR,
     th: TH,
     td: TD,
-    pre: PRE,
-    code: Code,
+    pre: Pre,
+    // code: Code,
+    code: (props) => {
+      const { className, children } = props;
+      const isInLine = typeof children === "string";
+
+      if (isInLine) {
+        return <InlineCode>{children}</InlineCode>;
+      }
+      return <Code {...props} />;
+    },
+
     Image,
     Callout,
     Card: MdxCard,
     ...components,
   };
+}
+interface MdxProps {
+  code: string;
+}
+
+export default function Mdx({ code }: MdxProps) {
+  const Component = useMDXComponent(code);
+
+  const components = useMDXComponents({});
+
+  return (
+    <div className="mdx">
+      <Component components={components as {}} />
+    </div>
+  );
 }

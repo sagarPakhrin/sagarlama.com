@@ -1,0 +1,87 @@
+---
+title: Neat Javascript Array Method
+description: A neat little javascript array method that you can use to create cool utility functions
+date: 06-15-2023
+published: true
+cover_image: https://res.cloudinary.com/dmvjadwhx/image/upload/v1688230362/sagarlama.com/mitchell-luo-FWoq_ldWlNQ-unsplash_vsknez.jpg
+metakeywords: javascript, array method
+metadescription: A neat little javascript array method that you can use to create cool utility functions
+tags: ["javascript", "frontend"]
+---
+
+```js
+.filter(Boolean)
+```
+
+
+### Conditional classNames filter
+```js
+export const classNames = (...classes) => {
+  return classes.filter(Boolean).join(' ');
+};
+
+```
+
+The trick here is, we take any number of parameters and spread them into a single array with `...classes`, use `.filter(Boolean)` array method to filter out any falsy values and join with and empty space
+
+#### Usage 
+When you want to conditionally add class names, normally we could do it with ternary operator.
+```jsx
+<div classNames={`${sticky ? 'sticky top-0 left-0 z-30' : 'relative'} px-8 py-4 flex items-center justify-end text-sm gap-4 text-gray-300 bg-gray-900 `} >
+...
+</div>
+
+```
+This this becomes hard to read when you have to check for multiple conditions. We can make it much cleaner
+using this utility function 
+
+```jsx
+<div classNames={
+  className={classNames(
+    'px-8 py-4 flex items-center justify-end text-sm gap-4 text-gray-300 bg-gray-900',
+    sticky ? 'sticky top-0 left-0 z-30' : 'relative'
+  )}
+>
+...
+</div>
+```
+
+When working with tailwindcss, it's common that your class names overflows from your screen. You can use the function to break your multiple classes into multiple lines for readibility
+
+```jsx
+className={classNames(
+  'absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100',
+  'rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5',
+  'focus:outline-none'
+)}
+```
+
+Here's another use case of a similar version of the function using the array method `.filter(Boolean)`  
+
+Say you want to stringify address that could have null values.
+
+```js
+const addresses = [
+  {
+    street1: '710 20th St N',
+    street2: null,
+    city: 'Birmingham',
+    town: null,
+    country: 'United States',
+  },
+  {
+    street1: '320 N Meridian St',
+    street2: null,
+    city: null,
+    town: 'Indianapolis',
+    country: 'UK',
+  },
+];
+
+```
+
+You could easily filter out the null values of the address
+```js
+addresses.map((address) => Object.values(address).filter(Boolean).join(', ')) 
+// ['710 20th St N, Birmingham, United States', '320 N Meridian St, Indianapolis, UK' ]
+```

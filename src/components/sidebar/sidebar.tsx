@@ -21,7 +21,7 @@ export const Sidebar = () => {
 
   const links = [
     { name: "Home", href: "/", icon: HiMiniHome },
-    { name: "Blogs", href: "/blogs", icon: HiBookOpen },
+    { name: "Posts", href: "/posts", icon: HiBookOpen },
     {
       name: "Bookmarks",
       href: "/bookmarks",
