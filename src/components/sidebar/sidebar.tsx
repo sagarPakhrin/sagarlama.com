@@ -22,11 +22,11 @@ export const Sidebar = () => {
   const links = [
     { name: "Home", href: "/", icon: HiMiniHome },
     { name: "Posts", href: "/posts", icon: HiBookOpen },
-    {
-      name: "Bookmarks",
-      href: "/bookmarks",
-      icon: HiBookmark,
-    },
+    // {
+    //   name: "Bookmarks",
+    //   href: "/bookmarks",
+    //   icon: HiBookmark,
+    // },
   ];
 
   const socials = [
