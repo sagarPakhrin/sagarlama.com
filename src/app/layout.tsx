@@ -3,9 +3,7 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
-import { Sidebar } from "@/components/sidebar/sidebar";
 import { cn } from "@/lib/utils";
-import { Header } from "@/components/header/header";
 import { UIProvider } from "@/context/ui-context";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -26,6 +26,7 @@ type Props = {
 const UIProvider = ({ children, ...props }: Props) => {
   const [isScrolled, setScrolled] = useState(false);
   const mainRef = useRef<HTMLDivElement>(null);
+  const [sideBarOpen, setSideBarOpen] = useState(false);
 
   const handleScroll = () => {
     if (mainRef.current) {
@@ -46,11 +47,17 @@ const UIProvider = ({ children, ...props }: Props) => {
     };
   }, []);
 
-  const openSidebar = () => {};
+  const openSidebar = () => {
+    setSideBarOpen(true);
+  };
 
-  const closeSidebar = () => {};
+  const closeSidebar = () => {
+    setSideBarOpen(false);
+  };
 
-  const toggleSidebar = () => {};
+  const toggleSidebar = () => {
+    setSideBarOpen((prev) => !prev);
+  };
 
   return (
     <Provider
@@ -60,7 +67,7 @@ const UIProvider = ({ children, ...props }: Props) => {
         closeSidebar,
         toggleSidebar,
         mainRef,
-        isSidebarOpen: true,
+        isSidebarOpen: sideBarOpen,
       }}
       {...props}
     >
