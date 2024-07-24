@@ -25,8 +25,8 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="mx-auto w-full max-w-2xl px-4 py-12 pb-10 md:px-8">
+    <div className="flex min-h-screen flex-col items-center justify-between py-10 px-24">
+      <div className="mx-auto w-full max-w-2xl px-4 pb-10 md:px-8">
         <div
           className={cn(
             "prose prose-a:text-blue-700 hover:prose-a:text-blue-500",
@@ -39,7 +39,6 @@ export default function Home() {
               Claros Analytics
             </Link>{" "}
             building software that simplifies the health plan analysis process
-            for US healthsystems.
           </p>
           <p className="my-5">
             I specialize in building full-stack web applications using
