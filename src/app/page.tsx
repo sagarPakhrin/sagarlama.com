@@ -25,7 +25,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between py-10 px-24">
+    <div className="flex min-h-screen flex-col items-center justify-between py-10 px-4 lg:px-24">
       <div className="mx-auto w-full max-w-2xl px-4 pb-10 md:px-8">
         <div
           className={cn(
@@ -117,7 +117,12 @@ export default function Home() {
                     <h3 className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-500 dark:text-white truncate">
                       {post.title}
                     </h3>
-                    <p className="text-sm font-normal text-gray-500 dark:text-gray-400 min-w-28">
+                    <p
+                      className={cn(
+                        "text-xs text-right md:text-sm font-normal text-gray-500",
+                        "dark:text-gray-400 text-nowrap",
+                      )}
+                    >
                       {post.date}
                     </p>
                   </Link>
