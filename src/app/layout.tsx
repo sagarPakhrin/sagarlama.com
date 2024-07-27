@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { cn } from "@/lib/utils";
 import { UIProvider } from "@/context/ui-context";
+import ErrorBoundary from "@/components/error-boundry/error-boundry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,14 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "flex")}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <UIProvider>{children}</UIProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <UIProvider>{children}</UIProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
         {GA_MEASUREMENT_ID && (
           <>
             <Script

@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Comment from "@/components/comment/comment";
 
 export interface PostLayoutProps {
   slug: string[];
@@ -122,7 +123,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
           <Mdx code={post.body.code} />
         </div>
       </article>
-      {/* <Comment /> */}
+      <Comment />
     </div>
   );
 };

@@ -11,7 +11,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { HiArrowUpRight, HiBookOpen, HiMiniHome } from "react-icons/hi2";
+import {
+  HiArrowUpRight,
+  HiBookmark,
+  HiBookOpen,
+  HiMiniHome,
+} from "react-icons/hi2";
 import { Button } from "../ui/button";
 
 export const Sidebar = () => {
@@ -23,11 +28,11 @@ export const Sidebar = () => {
   const links = [
     { name: "Home", href: "/", icon: HiMiniHome },
     { name: "Posts", href: "/posts", icon: HiBookOpen },
-    // {
-    //   name: "Bookmarks",
-    //   href: "/bookmarks",
-    //   icon: HiBookmark,
-    // },
+    {
+      name: "Bookmarks",
+      href: "/bookmarks",
+      icon: HiBookmark,
+    },
   ];
 
   const socials = [
@@ -111,6 +116,7 @@ export const Sidebar = () => {
                     pathname === link.href &&
                       "bg-black hover:bg-black text-white",
                   )}
+                  onClick={closeSidebar}
                 >
                   <Icon className="w-4 h-4 fill-current" />
                   <span>{link.name}</span>

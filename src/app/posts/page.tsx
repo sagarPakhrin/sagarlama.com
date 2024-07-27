@@ -1,3 +1,4 @@
+import { DefaultLayout } from "@/layouts/page.layout";
 import { Post, allPosts } from "contentlayer/generated";
 import { compareDesc, format, parseISO } from "date-fns";
 import Link from "next/link";
@@ -5,14 +6,14 @@ import Link from "next/link";
 // nextjs metadata
 
 export const metadata = {
-  title: "Sagar Lama | Posts",
+  title: "Posts",
   description: "Read my latest posts on software development and more.",
   openGraph: {
-    title: "Sagar Lama | Posts",
+    title: "Posts",
     description: "Read my latest posts on software development and more.",
   },
   twitter: {
-    title: "Sagar Lama | Posts",
+    title: "Posts",
     description: "Read my latest posts on software development and more.",
   },
 };
@@ -60,11 +61,11 @@ const Posts = () => {
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="mx-auto max-w-xl py-8 px-4">
+    <DefaultLayout>
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}
-    </div>
+    </DefaultLayout>
   );
 };
 
