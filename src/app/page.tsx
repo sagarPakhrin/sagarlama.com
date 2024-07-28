@@ -24,6 +24,33 @@ export default function Home() {
     },
   ];
 
+  const experiences = [
+    {
+      title: "Software Engineer",
+      company: "Claros Analytics",
+      location: "Nepal",
+      startDate: "December 2023",
+      endDate: "Present",
+      link: "https://clarosanalytics.com/",
+    },
+    {
+      title: "Software Engineer",
+      company: "Smaitic Labs",
+      location: "Nepal",
+      startDate: "June 2020",
+      endDate: "September 2022",
+      link: "https://www.smaitic.com/",
+    },
+    {
+      title: "Software Engineer",
+      company: "Introcept Nepal",
+      location: "Nepal",
+      startDate: "June 2020",
+      endDate: "September 2022",
+      link: "https://www.linkedin.com/company/introcept/posts/?feedView=all",
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-between py-10 px-4 lg:px-24">
       <div className="mx-auto w-full max-w-2xl px-4 pb-10 md:px-8">
@@ -48,60 +75,26 @@ export default function Home() {
           </p>
           <h4>Work Experience</h4>
           <ul className="ml-1 relative border-s border-gray-200 dark:border-gray-700 not-prose">
-            <li className="mb-10 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-              <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                December 2023 -
-              </time>
-              <h3 className="prose font-medium text-gray-900 dark:text-white">
-                Software Engineer at
-                <Link
-                  href="https://clarosanalytics.com/"
-                  target="_blank"
-                  className="text-blue-700 hover:text-blue-500"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  Claros Analytics
-                </Link>
-              </h3>
-            </li>
-            <li className="mb-10 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-              <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                September 2022 - December 2023
-              </time>
-              <h3 className="prose font-medium text-gray-900 dark:text-white">
-                Software Engineer at
-                <Link
-                  href="https://www.smaitic.com/"
-                  target="_blank"
-                  className="text-blue-700 hover:text-blue-500"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  Smaitic Labs
-                </Link>
-              </h3>
-            </li>
-            <li className="mb-10 ms-4">
-              <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-              <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                June 2020 - September 2022
-              </time>
-              <h3 className="prose font-medium text-gray-900 dark:text-white">
-                Software Engineer at
-                <Link
-                  href="https://www.linkedin.com/company/introcept/posts/?feedView=all"
-                  target="_blank"
-                  className="text-blue-700 hover:text-blue-500"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  Introcept Nepal
-                </Link>
-              </h3>
-            </li>
+            {experiences.map((experience) => (
+              <li className="mb-10 ms-4" key={experience.title}>
+                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                <time className="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500">
+                  {experience.startDate} - {experience.endDate}
+                </time>
+                <h3 className="prose font-medium text-gray-900 dark:text-white">
+                  {experience.title} at
+                  <Link
+                    href={experience.link}
+                    target="_blank"
+                    className="text-blue-700 hover:text-blue-500"
+                    rel="noopener noreferrer"
+                  >
+                    {" "}
+                    {experience.company}
+                  </Link>
+                </h3>
+              </li>
+            ))}
           </ul>
           <h4>Recent Posts</h4>
           <section className="not-prose">
