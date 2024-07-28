@@ -97,6 +97,7 @@ export const Sidebar = () => {
             variant="ghost"
             className="px-0 py-0 h-6 w-6 lg:hidden"
             onClick={closeSidebar}
+            aria-label="Close sidebar"
           >
             <CgClose className="h-5 w-5" />
           </Button>

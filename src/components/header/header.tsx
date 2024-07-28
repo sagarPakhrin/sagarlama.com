@@ -16,7 +16,12 @@ export const Header = () => {
         isScrolledContext && "bg-white/50 backdrop-blur-lg shadow-md",
       )}
     >
-      <Button variant="ghost" className="lg:hidden" onClick={openSidebar}>
+      <Button
+        variant="ghost"
+        className="lg:hidden"
+        onClick={openSidebar}
+        aria-label="Open sidebar"
+      >
         <HamburgerMenuIcon className="h-5 w-5" />
       </Button>
     </div>

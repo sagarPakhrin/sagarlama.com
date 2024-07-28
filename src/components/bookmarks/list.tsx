@@ -44,20 +44,15 @@ export const BookmarksList = ({
               rel="noopener noreferrer"
               className=""
             >
-              <h2 className="font-medium truncate text-gray-1000 dark:text-gray-100">
+              <h2 className="font-medium truncate text-gray-1000 dark:text-gray-100 py-1">
                 {bookmark.name}
               </h2>
-            </Link>
-            <Link
-              href={bookmark.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <IoIosLink className="w-4 h-4 fill-current text-gray-500" />
-              <span className="text-sm text-gray-500 truncate">
-                {bookmark.link}
-              </span>
+              <div className="flex items-center gap-2">
+                <IoIosLink className="w-4 h-4 fill-current text-gray-500" />
+                <span className="text-sm text-gray-500 truncate">
+                  {bookmark.link}
+                </span>
+              </div>
             </Link>
           </div>
         ))}
