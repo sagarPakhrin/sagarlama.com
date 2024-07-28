@@ -23,7 +23,7 @@ const Vault = async () => {
 
   return (
     <DefaultLayout>
-      <h1 className="text-3xl font-bold text-gray-800">Bookmarks</h1>
+      <h1 className="text-3xl font-bold text-gray-800">Vault</h1>
       <p className="text-gray-500">{metadata.description}</p>
       <div className="mt-3">
         <VaultList bookmarks={data} />
