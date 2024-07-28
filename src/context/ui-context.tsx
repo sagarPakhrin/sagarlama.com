@@ -72,10 +72,12 @@ const UIProvider = ({ children, ...props }: Props) => {
       {...props}
     >
       <Sidebar />
-      <main className="flex-1 overflow-y-auto max-h-screen" ref={mainRef}>
+      <div className="flex-1 overflow-y-auto max-h-screen" ref={mainRef}>
         <Header />
-        {children}
-      </main>
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
+      </div>
     </Provider>
   );
 };

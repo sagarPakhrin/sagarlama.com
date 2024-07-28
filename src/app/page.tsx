@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between py-10 px-4 lg:px-24">
-      <div className="mx-auto w-full max-w-2xl px-4 pb-10 md:px-8">
+      <div className="mx-auto w-full max-w-2xl pt-4 px-4 pb-10 md:px-8">
         <div
           className={cn(
             "prose prose-a:text-blue-700 hover:prose-a:text-blue-500",
@@ -65,18 +65,30 @@ export default function Home() {
             <Link href="https://clarosanalytics.com/" target="_blank">
               Claros Analytics
             </Link>{" "}
-            building software that simplifies the health plan analysis process
+            building software that simplifies the health plan analysis process.
           </p>
           <p className="my-5">
             I specialize in building full-stack web applications using
-            javascript/typescript technologies. I have experience with wide
-            range of technologies but I&apos;m focusing on <b>React/Nextjs</b>,{" "}
-            <b>Node/Nestjs</b>
+            <span aria-label="javascript and typescript">
+              {" "}
+              javascript/typescript{" "}
+            </span>
+            technologies. I have experience with wide range of technologies but
+            I&apos;m focusing on{" "}
+            <b>
+              {/* <span>React/Nextjs</span> */}
+              <span aria-label="React Nest JS">React,Nextjs</span>
+            </b>
+            ,{" "}
+            <b>
+              <span aria-label="Node and Nest JS">Node,Nestjs</span>
+            </b>
+            .
           </p>
           <h4>Work Experience</h4>
           <ul className="ml-1 relative border-s border-gray-200 dark:border-gray-700 not-prose">
-            {experiences.map((experience) => (
-              <li className="mb-10 ms-4" key={experience.title}>
+            {experiences.map((experience, idx) => (
+              <li className="mb-10 ms-4" key={idx}>
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500">
                   {experience.startDate} - {experience.endDate}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoIosLink } from "react-icons/io";
 
-export const BookmarksList = ({
+export const VaultList = ({
   bookmarks: initialData,
 }: {
   bookmarks: Awaited<ReturnType<typeof getBookmarks>>;
@@ -36,7 +36,7 @@ export const BookmarksList = ({
         {bookmarks.map((bookmark, idx) => (
           <div
             key={idx}
-            className="flex flex-col border-b border-gray-100 py-3 px-3.5 text-sm dark:border-gray-900 lg:rounded-lg lg:border-none lg:py-2 sm:hover:bg-gray-200 sm:dark:hover:bg-gray-800"
+            className="flex flex-col border-b border-gray-100 py-3 px-3.5 text-sm dark:border-gray-900 lg:rounded-lg lg:border-none lg:py-2 sm:hover:bg-gray-200 sm:dark:hover:bg-gray-800 rounded-md"
           >
             <Link
               href={bookmark.link}

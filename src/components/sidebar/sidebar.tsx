@@ -4,19 +4,14 @@ import Github from "@/assets/icons/github.svg";
 import Instagram from "@/assets/icons/insta.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
 import { useUiContext } from "@/context/ui-context";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import {
-  HiArrowUpRight,
-  HiBookmark,
-  HiBookOpen,
-  HiMiniHome,
-} from "react-icons/hi2";
+import { HiArrowUpRight, HiBookOpen, HiMiniHome } from "react-icons/hi2";
+import { PiVaultFill } from "react-icons/pi";
 import { Button } from "../ui/button";
 
 export const Sidebar = () => {
@@ -29,9 +24,9 @@ export const Sidebar = () => {
     { name: "Home", href: "/", icon: HiMiniHome },
     { name: "Posts", href: "/posts", icon: HiBookOpen },
     {
-      name: "Bookmarks",
-      href: "/bookmarks",
-      icon: HiBookmark,
+      name: "Vault",
+      href: "/vault",
+      icon: PiVaultFill,
     },
   ];
 
