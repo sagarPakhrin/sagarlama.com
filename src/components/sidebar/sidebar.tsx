@@ -67,7 +67,9 @@ export const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "3xl:w-80 z-30 flex h-full shadow-md max-h-screen min-h-screen w-3/4 overflow-y-auto border-r border-gray-100 bg-white pb-10 dark:border-gray-800 dark:bg-gray-900 sm:w-1/2 sm:pb-0 md:w-1/3 lg:z-auto lg:w-56 lg:dark:bg-gray-900 2xl:w-72 flex-col",
+        "w-3/4 sm:w-1/2 md:w-1/3 lg:w-56 2xl:w-72 3xl:w-80",
+        "flex flex-col h-full shadow-md max-h-screen min-h-screen overflow-y-auto",
+        "border-r border-gray-100 bg-white pb-10 dark:border-gray-800 dark:bg-gray-900 sm:pb-0 lg:z-auto lg:dark:bg-gray-900",
       )}
       ref={asideRef}
     >
