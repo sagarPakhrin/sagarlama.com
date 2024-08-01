@@ -5,6 +5,7 @@ import {
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 const computedFields: ComputedFields = {
   slug: {
@@ -58,7 +59,7 @@ export default makeSource({
   contentDirPath: "src/posts",
   documentTypes: [Post],
   mdx: {
-    // remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
       [
         // @ts-ignore

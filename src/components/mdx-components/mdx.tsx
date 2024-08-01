@@ -20,7 +20,7 @@ export function H1({
   return (
     <h1
       className={cn(
-        "mt-12 scroll-m-20 text-4xl font-bold tracking-tight",
+        "mt-12 break-words scroll-m-20 text-4xl font-bold tracking-tight",
         className,
       )}
       {...props}
@@ -34,7 +34,7 @@ export const H2 = ({
 }: React.ComponentPropsWithoutRef<"h2">) => (
   <h2
     className={cn(
-      "mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+      "mt-10 break-words scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
       className,
     )}
     {...props}
@@ -47,7 +47,7 @@ export const H3 = ({
 }: React.ComponentPropsWithoutRef<"h3">) => (
   <h3
     className={cn(
-      "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+      "mt-8 break-words scroll-m-20 text-2xl font-semibold tracking-tight",
       className,
     )}
     {...props}
@@ -60,7 +60,7 @@ export const H4 = ({
 }: React.ComponentPropsWithoutRef<"h4">) => (
   <h4
     className={cn(
-      "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+      "mt-8 break-words scroll-m-20 text-xl font-semibold tracking-tight",
       className,
     )}
     {...props}
@@ -73,7 +73,7 @@ export const H5 = ({
 }: React.ComponentPropsWithoutRef<"h5">) => (
   <h5
     className={cn(
-      "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+      "mt-8 break-words scroll-m-20 text-lg font-semibold tracking-tight",
       className,
     )}
     {...props}
@@ -86,7 +86,7 @@ export const H6 = ({
 }: React.ComponentPropsWithoutRef<"h6">) => (
   <h6
     className={cn(
-      "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+      "mt-8 break-words scroll-m-20 text-base font-semibold tracking-tight",
       className,
     )}
     {...props}
@@ -99,7 +99,7 @@ export const A = ({
 }: React.ComponentPropsWithoutRef<"a">) => (
   <a
     className={cn(
-      "font-medium underline underline-offset-4 hover:text-blue-700",
+      "font-medium underline break-words underline-offset-4 hover:text-blue-700",
       className,
     )}
     {...props}
@@ -111,7 +111,10 @@ export const P = ({
   ...props
 }: React.ComponentPropsWithoutRef<"p">) => (
   <p
-    className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+    className={cn(
+      "leading-7 break-words [&:not(:first-child)]:mt-6",
+      className,
+    )}
     {...props}
   />
 );
