@@ -4,6 +4,7 @@ import { getBookmarks } from "@/actions/bookmarks";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosLink } from "react-icons/io";
+import { Spinner } from "@/components/spinner/spinner";
 
 export const VaultList = ({
   bookmarks: initialData,
@@ -11,8 +12,10 @@ export const VaultList = ({
   bookmarks: Awaited<ReturnType<typeof getBookmarks>>;
 }) => {
   const [data, setData] = useState(initialData);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getMore = async () => {
+    setIsLoading(true);
     const newBookmarks = await getBookmarks({
       cursor: data.metadata.cursor,
     });
@@ -20,6 +23,7 @@ export const VaultList = ({
       data: [...data.data, ...newBookmarks.data],
       metadata: newBookmarks.metadata,
     });
+    setIsLoading(false);
   };
 
   const { metadata, data: bookmarks } = data;
@@ -31,6 +35,8 @@ export const VaultList = ({
           getMore();
         }
       }}
+      triggerOnce={false}
+      threshold={1}
     >
       <>
         {bookmarks.map((bookmark, idx) => (
@@ -56,6 +62,11 @@ export const VaultList = ({
             </Link>
           </div>
         ))}
+        {isLoading && (
+          <div className="mt-5 flex justify-center">
+            <Spinner />
+          </div>
+        )}
       </>
     </InView>
   );

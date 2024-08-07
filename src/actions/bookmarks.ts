@@ -11,7 +11,7 @@ type BookmarksQuery = {
 
 export const getBookmarks = async ({
   cursor,
-  pageSize = 20,
+  pageSize = 10,
 }: BookmarksQuery = {}) => {
   "use server";
   try {
