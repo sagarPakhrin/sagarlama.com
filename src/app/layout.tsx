@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import Script from "next/script";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/context/theme-provider";
-import { cn } from "@/lib/utils";
-import { UIProvider } from "@/context/ui-context";
 import ErrorBoundary from "@/components/error-boundry/error-boundry";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { ThemeProvider } from "@/context/theme-provider";
+import { UIProvider } from "@/context/ui-context";
+import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Link from "next/link";
+import Script from "next/script";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,8 +43,8 @@ export default function RootLayout({
         <Link
           href="#main"
           className={cn(
-            "absolute left-[-999px] z-[999] padding-2 opacity-0",
-            "focus:opacity-100 focus:left-0 w-full",
+            "absolute left-[-999px] z-[1] padding-2 opacity-0",
+            "focus:opacity-100 focus:left-0 w-full focus:z-20",
           )}
         >
           Skip to main content
@@ -55,7 +57,10 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <UIProvider>{children}</UIProvider>
+              <SidebarProvider className="overflow-hidden">
+                <AppSidebar />
+                <UIProvider>{children}</UIProvider>
+              </SidebarProvider>
             </ThemeProvider>
           </div>
         </ErrorBoundary>

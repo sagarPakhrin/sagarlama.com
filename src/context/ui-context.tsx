@@ -1,9 +1,8 @@
 "use client";
 
-import { Sidebar } from "@/components/sidebar/sidebar";
-import { createStrictContext } from "./strict-context";
-import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/header/header";
+import { useEffect, useRef, useState } from "react";
+import { createStrictContext } from "./strict-context";
 
 export interface UiState {
   isSidebarOpen: boolean;
@@ -71,7 +70,7 @@ const UIProvider = ({ children, ...props }: Props) => {
       }}
       {...props}
     >
-      <Sidebar />
+      {/*<Sidebar /> */}
       <div className="flex-1 overflow-y-auto max-h-screen" ref={mainRef}>
         <Header />
         <main id="main" tabIndex={-1}>

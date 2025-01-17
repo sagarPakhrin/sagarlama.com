@@ -22,7 +22,6 @@ const computedFields: ComputedFields = {
     type: "string",
     // resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
     resolve: (doc) => {
-      console.log(doc._raw.flattenedPath);
       return doc._raw.flattenedPath.split("/").join("/");
     },
   },
