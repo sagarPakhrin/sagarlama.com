@@ -79,19 +79,17 @@ export function NavMain({
               </SidebarMenuItem>
             </Collapsible>
           ) : (
-            <SidebarMenuButton tooltip={item.title} key={item.title} asChild>
-              <Link
-                href={item.url}
-                className={cn(
-                  "flex items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 data-[active=true]:bg-black data-[active=true]:font-medium data-[active=true]:text-white data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm",
-                  pathname === item.url &&
-                    "bg-black hover:bg-black text-white hover:text-white",
-                )}
-                data-active={`${pathname === item.url}`}
-                onClick={() => setOpenMobile(false)}
-              >
+            <SidebarMenuButton
+              tooltip={item.title}
+              key={item.title}
+              asChild
+              isActive={pathname === item.url}
+              className={cn(
+                "data-[active=true]:bg-black data-[active=true]:text-white",
+              )}
+            >
+              <Link href={item.url} onClick={() => setOpenMobile(false)}>
                 {item.icon && <item.icon size={16} />}
-
                 <span>{item.title}</span>
               </Link>
             </SidebarMenuButton>
