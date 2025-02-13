@@ -1,5 +1,6 @@
 "use client";
 
+import { HiDocumentText } from "react-icons/hi2";
 import Github from "@/assets/icons/github.svg";
 import Instagram from "@/assets/icons/insta.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
@@ -10,6 +11,7 @@ import { SidebarGroupLabel, SidebarMenuButton } from "../ui/sidebar";
 
 export function SidebarFooter() {
   const socials = [
+    { name: "Resume", href: "https://drive.google.com/file/d/1sfkiSGbeWzTtpNznrE7e8xwhwyYtfD0t/view?usp=drive_link", icon: HiDocumentText },
     { name: "Github", href: "https://github.com/sagarPakhrin", icon: Github },
     {
       name: "Linkedin",
