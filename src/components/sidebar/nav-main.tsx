@@ -3,19 +3,19 @@
 import { type LucideIcon } from "lucide-react";
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
+    Collapsible,
+    CollapsibleContent,
+    CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import {
-  SidebarGroup,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  useSidebar,
+    SidebarGroup,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    SidebarMenuSub,
+    SidebarMenuSubButton,
+    SidebarMenuSubItem,
+    useSidebar,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -85,7 +85,7 @@ export function NavMain({
               asChild
               isActive={pathname === item.url}
               className={cn(
-                "data-[active=true]:bg-black data-[active=true]:text-white",
+                "data-[active=true]:bg-primary data-[active=true]:text-primary-foreground",
               )}
             >
               <Link href={item.url} onClick={() => setOpenMobile(false)}>

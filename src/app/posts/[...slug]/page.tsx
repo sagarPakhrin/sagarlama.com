@@ -1,10 +1,9 @@
-import Mdx, { useMDXComponents } from "@/components/mdx-components/mdx";
+import Comment from "@/components/comment/comment";
+import Mdx from "@/components/mdx-components/mdx";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Comment from "@/components/comment/comment";
 
 export interface PostLayoutProps {
   slug: string[];
@@ -85,8 +84,8 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
     <div className="container mx-auto px-4">
       <article className="mx-auto max-w-4xl py-8">
         <header className="">
-          <h1 className="text-2xl lg:text-3xl font-bold">{post.title}</h1>
-          <div className="mt-2 flex items-center text-sm text-gray-600 gap-4">
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">{post.title}</h1>
+          <div className="mt-2 flex items-center text-sm text-muted-foreground gap-4">
             <time dateTime={post.date} className="">
               {format(parseISO(post.date), "LLLL d, yyyy")}
             </time>
@@ -96,7 +95,7 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
             {post.tags?.map((tag) => (
               <span
                 key={tag}
-                className="px-3 bg-gray-200 rounded-full text-sm py-1 text-gray-700"
+                className="px-3 bg-muted rounded-full text-sm py-1 text-muted-foreground border border-border"
               >
                 {tag}
               </span>
@@ -112,14 +111,14 @@ const PostLayout = async ({ params }: { params: PostLayoutProps }) => {
                 // width={1000}
                 // height={500}
                 fill
-                className="object-center object-cover rounded-md"
+                className="object-center object-cover rounded-md border border-border"
                 priority
               />
             </div>
           )}
         </div>
         <div className="mt-4">
-          <p>{post.description}</p>
+          <p className="text-muted-foreground">{post.description}</p>
           <Mdx code={post.body.code} />
         </div>
       </article>

@@ -22,21 +22,21 @@ const Code = (props: any) => {
   };
 
   return (
-    <div className="code-block gap-0 rounded-lg text-white">
-      <div className="flex justify-between items-center bg-gray-900 py-2 px-4 rounded-t-lg">
-        <span className="text-gray-300">{language}</span>
+    <div className="code-block gap-0 rounded-lg border border-border bg-card">
+      <div className="flex justify-between items-center bg-muted py-2 px-4 rounded-t-lg border-b border-border">
+        <span className="text-muted-foreground text-sm font-medium">{language}</span>
         <button
           type="button"
-          className="text-gray-300 hover:text-white"
+          className="text-muted-foreground hover:text-foreground transition-colors text-sm"
           onClick={handleCopy}
         >
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <div className="bg-gray-800 py-1 rounded-b-lg overflow-auto">
+      <div className="bg-code-background py-1 rounded-b-lg overflow-auto">
         <code
           ref={codeRef}
-          className={`${className} bg-gray-800 w-full flex flex-col`}
+          className={`${className} bg-code-background text-code-foreground w-full flex flex-col`}
         >
           {props.children}
         </code>

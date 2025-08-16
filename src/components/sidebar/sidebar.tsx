@@ -74,7 +74,7 @@ export const Sidebar = () => {
     <>
       <aside
         className={cn(
-          "absolute 3xl:w-80 z-30 flex h-full shadow-md max-h-screen min-h-screen w-3/4 overflow-y-auto border-r border-gray-100 bg-white pb-10 dark:border-gray-800 dark:bg-gray-900 sm:w-1/2 sm:pb-0 md:w-1/3 lg:z-auto lg:w-56 lg:dark:bg-gray-900 2xl:w-72 flex-col",
+          "absolute 3xl:w-80 z-30 flex h-full shadow-md max-h-screen min-h-screen w-3/4 overflow-y-auto border-r border-border bg-background pb-10 sm:w-1/2 sm:pb-0 md:w-1/3 lg:z-auto lg:w-56 2xl:w-72 flex-col",
           "-translate-x-full transform transition duration-200 ease-in-out",
           "lg:relative lg:translate-x-0",
           isSidebarOpen && "translate-x-0",
@@ -83,7 +83,7 @@ export const Sidebar = () => {
       >
         <div
           className={cn(
-            "px-3 py-4 sticky top-0 z-10 bg-white/70 backdrop-blur-lg",
+            "px-3 py-4 sticky top-0 z-10 bg-background/70 backdrop-blur-lg",
             isScrolled && "shadow-md",
             "flex items-center gap-2",
           )}
@@ -108,9 +108,9 @@ export const Sidebar = () => {
                   key={index}
                   href={link.href}
                   className={cn(
-                    "flex gap-3 px-2 py-1.5 rounded-md text-sm font-medium hover:bg-gray-200 text-gray-700 items-center",
+                    "flex gap-3 px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent text-foreground items-center transition-colors",
                     pathname === link.href &&
-                      "bg-black hover:bg-black text-white",
+                      "bg-primary hover:bg-primary text-primary-foreground",
                   )}
                   onClick={closeSidebar}
                 >
@@ -121,7 +121,7 @@ export const Sidebar = () => {
             ))}
           </ul>
           <div className="">
-            <h3 className="px-2 pt-5 pb-2 text-xs font-semibold text-gray-500 dark:text-white">
+            <h3 className="px-2 pt-5 pb-2 text-xs font-semibold text-muted-foreground">
               Socials
             </h3>
             <div className="mt-2 pb-8">
@@ -132,7 +132,7 @@ export const Sidebar = () => {
                       key={index}
                       href={link.href}
                       className={cn(
-                        "flex px-2 py-1.5 rounded-md text-sm font-medium hover:bg-gray-200 text-gray-700 items-center justify-between",
+                        "flex px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent text-foreground items-center justify-between transition-colors",
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -155,7 +155,7 @@ export const Sidebar = () => {
           <motion.div
             onClick={closeSidebar}
             className={cn(
-              "fixed inset-0 z-20 bg-black transition bg-opacity-20",
+              "fixed inset-0 z-20 bg-black/20 backdrop-blur-sm transition-all",
             )}
             initial="closed"
             animate="open"

@@ -34,7 +34,7 @@ export const H2 = ({
 }: React.ComponentPropsWithoutRef<"h2">) => (
   <h2
     className={cn(
-      "mt-10 break-words scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+      "mt-10 break-words scroll-m-20 border-b border-border pb-1 text-3xl font-semibold tracking-tight first:mt-0",
       className,
     )}
     {...props}
@@ -99,7 +99,7 @@ export const A = ({
 }: React.ComponentPropsWithoutRef<"a">) => (
   <a
     className={cn(
-      "font-medium underline break-words underline-offset-4 hover:text-blue-700",
+      "font-medium underline break-words underline-offset-4 text-link hover:text-link-hover dark:text-link dark:hover:text-link-hover",
       className,
     )}
     {...props}
@@ -146,7 +146,7 @@ export const BLOCKQUOTE = ({
 }: React.ComponentPropsWithoutRef<"blockquote">) => (
   <blockquote
     className={cn(
-      "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
+      "mt-6 border-l-2 border-border pl-6 italic [&>*]:text-muted-foreground",
       className,
     )}
     {...props}
@@ -159,10 +159,10 @@ export const IMG = ({
   ...props
 }: React.ImgHTMLAttributes<HTMLImageElement>) => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img className={cn("rounded-md border", className)} alt={alt} {...props} />
+  <img className={cn("rounded-md border border-border", className)} alt={alt} {...props} />
 );
 
-export const HR = ({ ...props }) => <hr className="my-4 md:my-8" {...props} />;
+export const HR = ({ ...props }) => <hr className="my-4 md:my-8 border-border" {...props} />;
 
 export const TABLE = ({
   className,
@@ -177,7 +177,7 @@ export const TR = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLTableRowElement>) => (
-  <tr className={cn("m-0 border-t p-0 even:bg-muted", className)} {...props} />
+  <tr className={cn("m-0 border-t border-border p-0 even:bg-muted", className)} {...props} />
 );
 
 export const TH = ({
@@ -186,7 +186,7 @@ export const TH = ({
 }: React.ComponentPropsWithoutRef<"th">) => (
   <th
     className={cn(
-      "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+      "border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
       className,
     )}
     {...props}
@@ -199,22 +199,12 @@ export const TD = ({
 }: React.ComponentPropsWithoutRef<"td">) => (
   <td
     className={cn(
-      "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+      "border border-border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
       className,
     )}
     {...props}
   />
 );
-
-// export const PRE = ({
-//   className,
-//   children,
-//   ...props
-// }: React.ComponentPropsWithoutRef<"pre">) => (
-//   <pre className={cn("mb-4 mt-6", className)} {...props}>
-//     <div>{children}</div>
-//   </pre>
-// );
 
 interface CalloutProps {
   icon?: string;
@@ -231,8 +221,9 @@ export function Callout({
   return (
     <div
       className={cn("my-6 flex items-start rounded-md border border-l-4 p-4", {
-        "border-red-900 bg-red-50": type === "danger",
-        "border-yellow-900 bg-yellow-50": type === "warning",
+        "border-destructive bg-destructive/10": type === "danger",
+        "border-yellow-500 bg-yellow-500/10 dark:border-yellow-400 dark:bg-yellow-400/10": type === "warning",
+        "border-border bg-muted": type === "default",
       })}
       {...props}
     >
@@ -241,6 +232,7 @@ export function Callout({
     </div>
   );
 }
+
 export function MdxCard({
   href,
   className,
@@ -251,7 +243,7 @@ export function MdxCard({
   return (
     <div
       className={cn(
-        "group relative rounded-lg border p-6 shadow-md transition-shadow hover:shadow-lg",
+        "group relative rounded-lg border border-border p-6 shadow-md transition-shadow hover:shadow-lg bg-card",
         disabled && "cursor-not-allowed opacity-60",
         className,
       )}
@@ -309,6 +301,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
   };
 }
+
 interface MdxProps {
   code: string;
 }

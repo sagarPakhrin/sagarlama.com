@@ -56,7 +56,7 @@ export default function Home() {
       <div className="mx-auto w-full max-w-2xl pt-4 px-4 pb-10 md:px-8">
         <div
           className={cn(
-            "prose prose-a:text-blue-700 hover:prose-a:text-blue-500",
+            "prose prose-a:text-link hover:prose-a:text-link-hover dark:prose-a:text-link dark:hover:prose-a:text-link-hover",
           )}
         >
           <p>
@@ -86,19 +86,19 @@ export default function Home() {
             .
           </p>
           <h4>Work Experience</h4>
-          <ul className="ml-1 relative border-s border-gray-200 dark:border-gray-700 not-prose">
+          <ul className="ml-1 relative border-s border-timeline-border dark:border-timeline-border not-prose">
             {experiences.map((experience, idx) => (
               <li className="mb-10 ms-4" key={idx}>
-                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                <time className="mb-1 text-sm font-normal leading-none text-gray-600 dark:text-gray-500">
+                <div className="absolute w-3 h-3 bg-timeline-dot dark:bg-timeline-dot rounded-full mt-1.5 -start-1.5 border border-background dark:border-background"></div>
+                <time className="mb-1 text-sm font-normal leading-none text-muted-foreground">
                   {experience.startDate} - {experience.endDate}
                 </time>
-                <h3 className="prose font-medium text-gray-900 dark:text-white">
+                <h3 className="prose font-medium text-foreground">
                   {experience.title} at
                   <Link
                     href={experience.link}
                     target="_blank"
-                    className="text-blue-700 hover:text-blue-500"
+                    className="text-link hover:text-link-hover dark:text-link dark:hover:text-link-hover"
                     rel="noopener noreferrer"
                   >
                     {" "}
@@ -116,16 +116,16 @@ export default function Home() {
                   <Link
                     href={post.link}
                     target="_blank"
-                    className="text-blue-700 group text-sm hover:text-blue-500 flex gap-4 justify-between items-center"
+                    className="text-link group text-sm hover:text-link-hover dark:text-link dark:hover:text-link-hover flex gap-4 justify-between items-center"
                     rel="noopener noreferrer"
                   >
-                    <h3 className="font-medium text-gray-900 group-hover:underline group-hover:text-blue-500 dark:text-white truncate">
+                    <h3 className="font-medium text-foreground group-hover:underline group-hover:text-link-hover dark:group-hover:text-link-hover truncate">
                       {post.title}
                     </h3>
                     <p
                       className={cn(
-                        "text-xs text-right md:text-sm font-normal text-gray-500",
-                        "dark:text-gray-400 text-nowrap",
+                        "text-xs text-right md:text-sm font-normal text-muted-foreground",
+                        "text-nowrap",
                       )}
                     >
                       {post.date}

@@ -62,6 +62,19 @@ const config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom colors for enhanced theming
+        code: {
+          background: "hsl(var(--code-background))",
+          foreground: "hsl(var(--code-foreground))",
+        },
+        link: {
+          DEFAULT: "hsl(var(--link))",
+          hover: "hsl(var(--link-hover))",
+        },
+        timeline: {
+          dot: "hsl(var(--timeline-dot))",
+          border: "hsl(var(--timeline-border))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

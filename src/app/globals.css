@@ -35,20 +35,21 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Additional custom colors for better theming */
+    --code-background: 210 40% 96.1%;
+    --code-foreground: 222.2 84% 4.9%;
+    --link: 221.2 83.2% 53.3%;
+    --link-hover: 217.2 91.2% 59.8%;
+    --timeline-dot: 210 40% 96.1%;
+    --timeline-border: 214.3 31.8% 91.4%;
   }
 
   .dark {
@@ -79,14 +80,24 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Consistent sidebar colors that match the main background */
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222.2 47.4% 11.2%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 212.7 26.8% 83.9%;
+
+    /* Enhanced dark mode colors */
+    --code-background: 217.2 32.6% 17.5%;
+    --code-foreground: 210 40% 98%;
+    --link: 217.2 91.2% 59.8%;
+    --link-hover: 221.2 83.2% 53.3%;
+    --timeline-dot: 217.2 32.6% 17.5%;
+    --timeline-border: 217.2 32.6% 17.5%;
   }
 }
 
@@ -99,10 +110,82 @@
   }
 }
 
+/* Enhanced code block styling for dark mode */
 [data-rehype-pretty-code-figure] [data-line] {
   @apply px-4;
 }
+
 [data-rehype-pretty-code-figure] [data-highlighted-line] {
-  background-color: rgb(66 66 66 / 50%);
+  background-color: hsl(var(--code-background));
+}
+
+/* Dark mode specific code block styling */
+.dark [data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background-color: hsl(var(--code-background));
+}
+
+/* Improved prose styling for dark mode */
+.dark .prose {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose p {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .prose a {
+  color: hsl(var(--link));
+}
+
+.dark .prose a:hover {
+  color: hsl(var(--link-hover));
+}
+
+.dark .prose strong {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose blockquote {
+  border-left-color: hsl(var(--border));
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .prose hr {
+  border-color: hsl(var(--border));
+}
+
+.dark .prose table {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose th {
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.dark .prose td {
+  border-color: hsl(var(--border));
+}
+
+.dark .prose ul > li::marker {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .prose ol > li::marker {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 

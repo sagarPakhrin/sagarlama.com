@@ -1,13 +1,15 @@
-interface InlineCodeProps {
-  children: React.ReactNode;
-}
+import { cn } from "@/lib/utils";
 
-const InlineCode: React.FC<InlineCodeProps> = ({ children }) => {
+export default function InlineCode({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <code className="bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100 px-2 py-1 rounded text-base">
+    <code className={cn("bg-code-background text-code-foreground px-2 py-1 rounded text-base", className)}>
       {children}
     </code>
   );
-};
-
-export default InlineCode;
+}

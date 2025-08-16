@@ -1,12 +1,11 @@
 "use client";
 
-import { HiDocumentText } from "react-icons/hi2";
 import Github from "@/assets/icons/github.svg";
 import Instagram from "@/assets/icons/insta.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { HiArrowUpRight } from "react-icons/hi2";
+import { HiArrowUpRight, HiDocumentText } from "react-icons/hi2";
 import { SidebarGroupLabel, SidebarMenuButton } from "../ui/sidebar";
 
 export function SidebarFooter() {
@@ -38,7 +37,7 @@ export function SidebarFooter() {
                   key={index}
                   href={link.href}
                   className={cn(
-                    "flex px-2 py-1.5 rounded-md text-sm font-medium hover:bg-gray-200 text-gray-700 items-center justify-between",
+                    "flex px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent dark:hover:bg-accent text-foreground items-center justify-between transition-colors",
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

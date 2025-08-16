@@ -9,9 +9,9 @@ export const Header = () => {
   return (
     <div
       className={cn(
-        "filter-blur sticky top-0 z-[9] px-3 py-2 dark:border-b dark:border-gray-900 flex items-center",
-        "bg-white dark:bg-gray-900 transition-shadow min-h-[52px]",
-        isScrolledContext && "bg-white/50 backdrop-blur-lg shadow-md",
+        "filter-blur sticky top-0 z-[9] px-3 py-2 border-b border-border flex items-center",
+        "bg-background/80 backdrop-blur-lg transition-shadow min-h-[52px]",
+        isScrolledContext && "bg-background/90 backdrop-blur-lg shadow-md",
       )}
     >
       {/* 

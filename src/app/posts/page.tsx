@@ -22,21 +22,21 @@ function PostCard(post: Post) {
   return (
     <div className="mb-8">
       <h2 className="mb-1 text-xl">
-        <Link href={post.slug} className="hover:text-blue-700">
+        <Link href={post.slug} className="hover:text-link dark:hover:text-link-hover text-foreground">
           {post.title}
         </Link>
       </h2>
-      <div className="flex items-center gap-3  text-sm text-gray-600">
+      <div className="flex items-center gap-3 text-sm text-muted-foreground">
         <time dateTime={post.date}>
           {format(parseISO(post.date), "LLLL d, yyyy")}
         </time>
         <span className="text-sm">{post.readingTime.text}</span>
       </div>
-      <p className="mt-3 text-gray-700 dark:text-gray-300 line-clamp-2">
+      <p className="mt-3 text-muted-foreground line-clamp-2">
         {post.description}
       </p>
       <Link
-        className="text-sm underline mt-2 hover:text-blue-500 font-medium"
+        className="text-sm underline mt-2 hover:text-link dark:hover:text-link-hover text-link dark:text-link-hover font-medium"
         href={post.slug}
       >
         Read Post
