@@ -1,30 +1,19 @@
-//  src/lib/db/index.ts
+//  src/db/index.ts
 
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+import Database from "better-sqlite3";
+import { drizzle } from "drizzle-orm/better-sqlite3";
+import { join } from "path";
 import * as schema from "./schema";
 
-const connectionString = process.env.DB_URL;
+// SQLite database file path
+const dbPath = join(process.cwd(), "src", "db", "bookmarks.db");
 
-if (!connectionString) {
-  throw new Error("DATABASE_URL is not set");
-}
+// Create SQLite database connection
+const sqlite = new Database(dbPath);
 
-declare module global {
-  let postgresSqlClient: ReturnType<typeof postgres> | undefined;
-}
+// Enable foreign keys
+sqlite.pragma("foreign_keys = ON");
 
-let postgresSqlClient;
-
-if (process.env.NODE_ENV !== "production") {
-  if (!global.postgresSqlClient) {
-    global.postgresSqlClient = postgres(connectionString);
-  }
-  postgresSqlClient = global.postgresSqlClient;
-} else {
-  postgresSqlClient = postgres(connectionString);
-}
-
-export const db = drizzle(postgresSqlClient, {
+export const db = drizzle(sqlite, {
   schema,
 });

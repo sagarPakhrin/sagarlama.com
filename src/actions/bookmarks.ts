@@ -2,7 +2,7 @@
 
 import { db } from "@/db";
 import { bookmarks } from "@/db/schema";
-import { count } from "drizzle-orm";
+import { count, desc, gt } from "drizzle-orm";
 
 type BookmarksQuery = {
   cursor?: number;
@@ -15,27 +15,43 @@ export const getBookmarks = async ({
 }: BookmarksQuery = {}) => {
   "use server";
   try {
-    const data = await db.query.bookmarks.findMany({
-      limit: pageSize,
-      where: (bookmarks, { gt }) =>
-        cursor ? gt(bookmarks.id, cursor) : undefined,
-    });
-    const total = await db.select({ count: count() }).from(bookmarks);
+    // Build query with cursor-based pagination
+    let data;
 
-    const hasMoreData = data.length === pageSize; // if there is no more data, data length will be null but pageSize will be 3
+    if (cursor) {
+      data = await db
+        .select()
+        .from(bookmarks)
+        .where(gt(bookmarks.id, cursor))
+        .orderBy(desc(bookmarks.id))
+        .limit(pageSize);
+    } else {
+      data = await db
+        .select()
+        .from(bookmarks)
+        .orderBy(desc(bookmarks.id))
+        .limit(pageSize);
+    }
 
+    // Get total count
+    const totalResult = await db.select({ count: count() }).from(bookmarks);
+    const total = totalResult[0]?.count || 0;
+
+    // Check if there's more data
+    const hasMoreData = data.length === pageSize;
     const nextCursor = hasMoreData ? data[data.length - 1]?.id : undefined;
 
     const response = {
       data: data,
       metadata: {
-        total: total?.[0]?.count || 0,
+        total: total,
         cursor: nextCursor,
       },
     };
 
     return response;
   } catch (error: unknown) {
+    console.error("Error in getBookmarks:", error);
     throw new Error(`An error occurred: ${error}`);
   }
 };
