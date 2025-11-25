@@ -26,11 +26,19 @@ export default function Home() {
 
   const experiences = [
     {
+      title: "Senior Software Engineer",
+      company: "Monotype",
+      location: "Nepal",
+      startDate: "April 2025",
+      endDate: "Present",
+      link: "https://www.monotype.com/",
+    },
+    {
       title: "Software Engineer",
       company: "Claros Analytics",
       location: "Nepal",
       startDate: "December 2023",
-      endDate: "Present",
+      endDate: "April 2025",
       link: "https://clarosanalytics.com/",
     },
     {
@@ -62,10 +70,10 @@ export default function Home() {
           <p>
             Hi, I&apos;m Sagar Lama, a software engineer and an occasional
             writer. I&apos;m currently working at{" "}
-            <Link href="https://clarosanalytics.com/" target="_blank">
-              Claros Analytics
+            <Link href="https://www.monotype.com/" target="_blank">
+              Monotype
             </Link>{" "}
-            building software that simplifies the health plan analysis process.
+            as a Senior Software Engineer.
           </p>
           <p className="my-5">
             I specialize in building full-stack web applications using

@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sagar Lama",
-  description: "Software Engineer, Occasional Writer based in Kathmandu, Nepal",
+  description: "Senior Software Engineer at Monotype, Occasional Writer based in Kathmandu, Nepal",
   authors: [
     {
       name: "Sagar Lama",
