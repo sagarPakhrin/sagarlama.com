@@ -10,7 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { HiArrowUpRight, HiBookOpen, HiMiniHome } from "react-icons/hi2";
+import { HiArrowUpRight, HiBookOpen, HiFolderOpen, HiMiniHome } from "react-icons/hi2";
 import { PiVaultFill } from "react-icons/pi";
 import { Button } from "../ui/button";
 
@@ -23,6 +23,11 @@ export const Sidebar = () => {
   const links = [
     { name: "Home", href: "/", icon: HiMiniHome },
     { name: "Posts", href: "/posts", icon: HiBookOpen },
+    {
+      name: "Projects",
+      href: "/projects",
+      icon: HiFolderOpen,
+    },
     {
       name: "Vault",
       href: "/vault",
@@ -110,7 +115,7 @@ export const Sidebar = () => {
                   className={cn(
                     "flex gap-3 px-2 py-1.5 rounded-md text-sm font-medium hover:bg-accent text-foreground items-center transition-colors",
                     pathname === link.href &&
-                      "bg-primary hover:bg-primary text-primary-foreground",
+                    "bg-primary hover:bg-primary text-primary-foreground",
                   )}
                   onClick={closeSidebar}
                 >

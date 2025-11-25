@@ -42,6 +42,18 @@ const nextConfig = {
         hostname: "substackcdn.com",
         pathname: "/image/fetch/**",
       },
+      {
+        protocol: "https",
+        hostname: "app.merokharcha.com",
+      },
+      {
+        protocol: "https",
+        hostname: "sagarlama.com",
+      },
+      {
+        protocol: "https",
+        hostname: "merokharcha.com",
+      },
     ],
   },
 };

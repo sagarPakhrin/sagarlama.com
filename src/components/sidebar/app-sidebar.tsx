@@ -1,8 +1,7 @@
 "use client";
 
-import { SquareTerminal } from "lucide-react";
 import * as React from "react";
-import { HiBookOpen, HiMiniHome } from "react-icons/hi2";
+import { HiBookOpen, HiFolderOpen, HiMiniHome } from "react-icons/hi2";
 import { PiVaultFill } from "react-icons/pi";
 
 import {
@@ -25,6 +24,11 @@ const data = {
       title: "Vault",
       url: "/vault",
       icon: PiVaultFill,
+    },
+    {
+      title: "Projects",
+      url: "/projects",
+      icon: HiFolderOpen,
     },
     //{
     //  title: "Experiments",

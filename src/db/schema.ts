@@ -17,3 +17,14 @@ export const bookmarks = sqliteTable("bookmarks", {
 });
 
 export type Bookmark = typeof bookmarks.$inferSelect;
+
+export const projects = sqliteTable("projects", {
+  id: integer("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  preview_image_url: text("preview_image_url"),
+  url: text("url"),
+  created_at: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+});
+
+export type Project = typeof projects.$inferSelect;
