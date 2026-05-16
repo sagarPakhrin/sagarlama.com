@@ -15,6 +15,7 @@ import { InView } from "react-intersection-observer";
 // Helper function to extract actual image URL from Next.js optimized URLs
 const getImageUrl = (url: string | null | undefined): string | null => {
   if (!url) return null;
+  if (url.startsWith("/")) return url;
   try {
     const urlObj = new URL(url);
     // If it's a Next.js optimized image URL, extract the actual image URL
@@ -131,4 +132,3 @@ export const ProjectsList = ({
     </>
   );
 };
-
